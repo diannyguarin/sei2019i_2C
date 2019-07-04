@@ -61,10 +61,12 @@ public class UserRepository {
     public boolean updateUser(String name, String username, String password){ //update
         boolean success=false;
         try{
-            updateUserName(name);
-            updateUserUsername(username);
-            updateUserPassword(password);
-            success=true;
+            if(updateUserName(name) && updateUserUsername(username) && updateUserPassword(password)){
+                success=true;
+
+            }
+
+
         }catch(Exception ex){
             Log.d("failure in update", ex.getMessage());
         }
@@ -78,6 +80,7 @@ public class UserRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(name != ""){
+
                 datos = new String[]{"update "+SQLHelper.usr+".Users set name='"+name+"'"};
                 succes = new AsyncCUD().execute(datos).get();
                 this.user.setName(name);
