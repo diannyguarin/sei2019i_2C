@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.tournaments.ui.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -76,7 +76,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView17"
+            android:id="@+id/bBack"
             android:layout_width="67dp"
             android:layout_height="96dp"
             app:srcCompat="@drawable/backbutton" />

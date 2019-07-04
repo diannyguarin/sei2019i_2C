@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChDataActivity">
+    tools:context="com.example.tournaments.ui.ChDataActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         //IMAGENES
-
 
         <ImageView
             android:id="@+id/bcancelReg"

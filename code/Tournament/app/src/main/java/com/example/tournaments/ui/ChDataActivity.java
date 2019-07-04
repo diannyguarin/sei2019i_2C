@@ -1,10 +1,10 @@
-package com.example.myapplication;
+package com.example.tournaments.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.tournaments.R;
 
 public class ChDataActivity extends AppCompatActivity {
 
