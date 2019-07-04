@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
             android:layout_gravity="center_vertical"
             android:tint="#56FFFFFF"
-            app:srcCompat="@drawable/Imagen4" />
+            app:srcCompat="@drawable/imagen4" />
 
         <ImageView
             android:id="@+id/imageView13"
@@ -30,7 +30,7 @@
 
             android:layout_gravity="right|center"
             android:foregroundGravity="center_vertical"
-            app:srcCompat="@drawable/TORNEO" />
+            app:srcCompat="@drawable/torneo" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -47,7 +47,7 @@
 
             android:layout_gravity="center_horizontal"
             android:tint="#56FFFFFF"
-            app:srcCompat="@drawable/Imagen5" />
+            app:srcCompat="@drawable/imagen5" />
 
         <ImageView
             android:id="@+id/imageView14"
@@ -56,7 +56,7 @@
 
             android:layout_gravity="bottom|right"
             android:tint="#56FFFFFF"
-            app:srcCompat="@drawable/Imagen3" />
+            app:srcCompat="@drawable/imagen3" />
 
         <ImageView
             android:id="@+id/imageView15"
@@ -65,7 +65,7 @@
 
             android:layout_gravity="bottom|right"
             android:tint="#56FFFFFF"
-            app:srcCompat="@drawable/Imagen6" />
+            app:srcCompat="@drawable/imagen6" />
 
         <LinearLayout
             android:layout_width="312dp"

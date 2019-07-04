@@ -14,14 +14,14 @@
 
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/bcancelReg"
             android:layout_width="579dp"
             android:layout_height="337dp"
             android:layout_gravity="end|left"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
             android:tint="#8AFFFFFF"
-            app:srcCompat="@drawable/blueCircle2" />
+            app:srcCompat="@drawable/bluecircle2" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -53,12 +53,12 @@
             android:layout_width="539dp"
             android:layout_height="334dp"
 
-            android:layout_alignBottom="@+id/null"
+
             android:layout_gravity="bottom|right"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
             android:tint="#51FFFFFF"
-            app:srcCompat="@drawable/orangeCircle2" />
+            app:srcCompat="@drawable/orangecircle2" />
 
         <ImageView
             android:id="@+id/imageView11"

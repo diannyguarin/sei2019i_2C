@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainScreenActivity">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="298dp"
             android:layout_gravity="right"
             android:tint="#70FFFFFF"
-            app:srcCompat="@drawable/orangeCircle3" />
+            app:srcCompat="@drawable/orangecircle3" />
 
         <ImageView
             android:id="@+id/imageView19"
@@ -27,7 +27,7 @@
             android:layout_height="519dp"
             android:layout_gravity="bottom"
             android:tint="#6BFFFFFF"
-            app:srcCompat="@drawable/blueCircle3" />
+            app:srcCompat="@drawable/bluecircle3" />
 
 
         <ImageView
@@ -79,7 +79,7 @@
             android:id="@+id/imageView17"
             android:layout_width="67dp"
             android:layout_height="96dp"
-            app:srcCompat="@drawable/backButton" />
+            app:srcCompat="@drawable/backbutton" />
 
 
 
