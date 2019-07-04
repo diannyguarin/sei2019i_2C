@@ -53,6 +53,9 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> faabc33ad8367a94589ef05e57a5f0967ac65df8
 }
