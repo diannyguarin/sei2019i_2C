@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="orangeCorp">#FF7D06</color>
+    <color name="blueCorp">#00ADEF</color>
+    <color name="letterAccent">#FFFFFF</color>
+
+</resources>
