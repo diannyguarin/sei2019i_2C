@@ -8,7 +8,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         //IMAGENES
 
@@ -23,7 +24,7 @@
             app:srcCompat="@drawable/bluecircle2" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/bexit"
             android:layout_width="53dp"
             android:layout_height="45dp"
             android:layout_gravity="right"
@@ -158,7 +159,6 @@
                 app:srcCompat="@drawable/cronom" />
 
         </LinearLayout>
-
 
 
     </FrameLayout>

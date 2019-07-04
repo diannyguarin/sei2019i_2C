@@ -5,35 +5,23 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-<<<<<<< HEAD
         android:label="Tournament"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.LoginActivity">
-=======
-        android:label="Tournaments"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.example.tournaments.ui.LoginActivity">
->>>>>>> faabc33ad8367a94589ef05e57a5f0967ac65df8
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".ui.RegisterActivity">
         </activity>
         <activity android:name=".ui.ChDataActivity">
         </activity>
         <activity android:name=".ui.MainActivity">
         </activity>
-=======
->>>>>>> faabc33ad8367a94589ef05e57a5f0967ac65df8
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>

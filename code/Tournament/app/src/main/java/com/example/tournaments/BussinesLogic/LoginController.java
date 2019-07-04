@@ -10,7 +10,7 @@ public class LoginController {
 
 
     public boolean Login(String username, String Password){
-        User temp = user.getuserByName(username);
+        User temp = user.getUserByUsername(username);
         String pass;
 
         pass = temp.getPassword();
