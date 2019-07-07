@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),"Bienvenido",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    inten.putExtra("currentUsername", );
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_SHORT).show();

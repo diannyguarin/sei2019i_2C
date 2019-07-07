@@ -58,30 +58,27 @@ public class UserRepository {
         return succes;
     }
 
-    public boolean updateUser(String name, String username, String password){ //update
+    public boolean updateUser(String currentUsername, String name, String username, String password){ //update
         boolean success=false;
         try{
-            if(updateUserName(name) && updateUserUsername(username) && updateUserPassword(password)){
-                success=true;
-
-            }
-
-
+            updateUserName(name, currentUsername);
+            updateUserPassword(password, currentUsername);
+            updateUserUsername(username, currentUsername);
+            success=true;
         }catch(Exception ex){
             Log.d("failure in update", ex.getMessage());
         }
         return success;
     }
 
-    public boolean updateUserName(String name){ //update
+    public boolean updateUserName(String name, String currentUsername){ //update
         boolean succes=false;
         try
         {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(name != ""){
-
-                datos = new String[]{"update "+SQLHelper.usr+".Users set name='"+name+"'"};
+                datos = new String[]{"update "+SQLHelper.usr+".Users set name='"+name+"' WHERE username='"+currentUsername+"'"};
                 succes = new AsyncCUD().execute(datos).get();
                 this.user.setName(name);
             }
@@ -92,14 +89,14 @@ public class UserRepository {
         return succes;
     }
 
-    public boolean updateUserUsername(String username){ //update
+    public boolean updateUserUsername(String username, String currentUsername){ //update
         boolean succes=false;
         try
         {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(username != ""){
-                datos = new String[]{"update "+SQLHelper.usr+".Users set username='"+username+"'"};
+                datos = new String[]{"update "+SQLHelper.usr+".Users set username='"+username+"' WHERE username='"+currentUsername+"'"};
                 succes = new AsyncCUD().execute(datos).get();
                 this.user.setUsername(username);
             }
@@ -110,14 +107,14 @@ public class UserRepository {
         return succes;
     }
 
-    public boolean updateUserPassword(String password){ //update
+    public boolean updateUserPassword(String password, String currentUsername){ //update
         boolean succes=false;
         try
         {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(password != ""){
-                datos = new String[]{"update "+SQLHelper.usr+".Users set password='"+password+"'"};
+                datos = new String[]{"update "+SQLHelper.usr+".Users set password='"+password+"' WHERE username='"+currentUsername+"'"};
                 succes = new AsyncCUD().execute(datos).get();
                 this.user.setPassword(password);
             }
