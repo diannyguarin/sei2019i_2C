@@ -45,14 +45,15 @@ protected void onCreate(Bundle savedInstanceState) {
                 @Override
                 public void onClick(View v) {
                         // Insertar en base de datos
-
-                        if (controller.ChData(LoginActivity.name,name.getText().toString(), nick.getText().toString(), passw.getText().toString())==true){
-                                Toast.makeText(getApplicationContext(),"Datos cambiados exitosamente",Toast.LENGTH_SHORT).show();
+                        try{
+                        controller.updateUser(LoginActivity.name,name.getText().toString(), nick.getText().toString(), passw.getText().toString());
+                                Toast.makeText(getApplicationContext(), "Datos cambiados exitosamente", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
-                        }else{
-                                Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_SHORT).show();
-                        }
+                        }catch(Exception e){
+
+                Toast.makeText(getApplicationContext(),"ERROR",Toast.LENGTH_SHORT).show();
+        }
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                 }

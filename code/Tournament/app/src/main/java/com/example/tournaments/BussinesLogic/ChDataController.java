@@ -1,22 +1,16 @@
 package com.example.tournaments.BussinesLogic;
 
-import android.util.Log;
+import android.os.Bundle;
 
 import com.example.tournaments.dataAcces.models.User;
 import com.example.tournaments.dataAcces.repositories.UserRepository;
 
 public class ChDataController {
-    UserRepository user = new UserRepository();
+    private UserRepository userRepository;
+    private User user;
 
-
-    public boolean ChData(String actualName,String name, String username, String password){
-        user.getUserByUsername(actualName);
-        if(user.updateUser(name,username,password)){
-            Log.d("STATE","It works, info created: " + name + ", " + username + " , " + password);
-            return true;
-        }else{
-            Log.d("STATE","It doesn't work, info created: " + name + ", " + username + " , " + password);
-            return false;
-        }
+    public void updateUser(String currentUsername, String name, String username, String password){
+        userRepository = new UserRepository();
+        userRepository.updateUser(currentUsername, name, username, password);
     }
 }
