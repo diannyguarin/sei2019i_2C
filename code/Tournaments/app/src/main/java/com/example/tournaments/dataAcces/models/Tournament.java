@@ -17,7 +17,7 @@ public class Tournament {
         this.numberOfTeams = numberOfTeams;
     }
 
-    public Tournament(String name, int admin, int sport, int type, int numberOfTeams) {
+    public Tournament(String name, int sport, int type, int numberOfTeams) {
         this.name = name;
         this.admin = admin;
         this.sport = sport;

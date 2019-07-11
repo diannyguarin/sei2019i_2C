@@ -69,14 +69,14 @@ public class TournamentRepository {
         return this.tour;
     }
 
-    public boolean createTournament(int id, String name, int admin, int sport, int type, int numTeams){ //create
+    public boolean createTournament(String name,int sport, int type, int numTeams){ //create
         boolean succes=false;
         try
         {
             Class.forName(SQLHelper.driver).newInstance();
-            String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournaments(name,admin,sport,type,numberOfTeams) values ('"+name+"', "+admin+", "+sport+", "+type+", "+numTeams+")"};
+            String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournaments(name,admin,sport,type,numberOfTeams) values ('"+name+"', 1, "+sport+", "+type+", "+numTeams+")"};
             succes = new AsyncCUD().execute(datos).get();
-                this.tour =new Tournament(id, name, admin, sport, type, numTeams);
+                this.tour =new Tournament(name, sport, type, numTeams);
         }catch(Exception ex)
         {
             Log.d("failure in insert", ex.getMessage());

@@ -5,12 +5,14 @@ import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 public class CreateTournamentController {
     private TournamentRepository tournamentRepository;
 
-    public boolean createTournament(int id, String name ,int admin,int sport, int tournamentType, int numberOfTeams){
+    public boolean createTournament(String name, int sport, int tournamentType, int numberOfTeams){
         boolean success = false;
         try{
             tournamentRepository = new TournamentRepository();
-            success = tournamentRepository.createTournament(id,name,admin,sport, tournamentType, numberOfTeams);
-        }catch(Exception e){}
+            success = tournamentRepository.createTournament(name, sport, tournamentType, numberOfTeams);
+        }catch(Exception e){
+            return false;
+        }
         return success;
     }
 }
