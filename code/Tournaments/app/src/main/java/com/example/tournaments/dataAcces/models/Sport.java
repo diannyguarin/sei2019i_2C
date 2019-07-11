@@ -9,6 +9,10 @@ public class Sport {
         this.sportname = sportname;
     }
 
+    public Sport() {
+        ;
+    }
+
     public Sport(String sportname) {
         this.sportname = sportname;
     }

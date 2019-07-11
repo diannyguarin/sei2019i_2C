@@ -19,6 +19,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         tv_role = (TextView) findViewById(R.id.tv_role);
+
         newT = (FloatingActionButton) findViewById(R.id.newTour);
         newT.setOnClickListener(new View.OnClickListener() {
             @Override

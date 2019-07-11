@@ -11,21 +11,21 @@ import com.example.tournaments.dataAcces.models.Tournament_Type;
 import java.util.ArrayList;
 
 public class TypeRepository {
-    Tournament_Type Tournament_Type;
+    Tournament_Type Tournament_type;
 
 
     public TypeRepository() {
-        this.Tournament_Type = null;
+        this.Tournament_type = null;
     }
 
     public Tournament_Type getTournament_Type() {
-        return Tournament_Type;
+        return Tournament_type;
     }
 
     public Tournament_Type getTournament_TypeByName(String name){ //read
         ArrayList<String> res;
         try{
-            String[] datos = new String[]{"SELECT * from "+ SQLHelper.usr +".Tournament_Tournament_Types WHERE name='"+name+"'"};
+            String[] datos = new String[]{"SELECT * from "+ SQLHelper.usr +".Tournament_types WHERE name='"+name+"'"};
             res= new AsyncQuery(" Tournament_types").execute(datos).get();
 
             String[] splint=new String[0];
@@ -36,13 +36,13 @@ public class TypeRepository {
                 splint[i].trim();
             }
             if(splint!=null&&splint.length>0){
-                this.Tournament_Type =new Tournament_Type(Integer.valueOf(splint[0]),splint[1]);
+                this.Tournament_type =new Tournament_Type(Integer.valueOf(splint[0]),splint[1]);
             }
         }catch(Exception ex)
         {
             Log.d("failure in query", ex.getMessage());
         }
-        return this.Tournament_Type;
+        return this.Tournament_type;
     }
 
     public boolean createTournament_Type(String name){ //create
@@ -50,9 +50,9 @@ public class TypeRepository {
         try
         {
             Class.forName(SQLHelper.driver).newInstance();
-            String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournament_Tournament_Types(name) values ('"+name+")"};
+            String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournament_types(name) values ('"+name+")"};
             succes = new AsyncCUD().execute(datos).get();
-            this.Tournament_Type =new Tournament_Type(name);
+            this.Tournament_type =new Tournament_Type(name);
         }catch(Exception ex)
         {
             Log.d("failure in insert", ex.getMessage());
@@ -78,10 +78,10 @@ public class TypeRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(name != ""){
-                datos = new String[]{"update "+SQLHelper.usr+".Tournament_Types set name='"+name+"' WHERE name='"+currentName+"'"};
+                datos = new String[]{"update "+SQLHelper.usr+".Tournament_types set name='"+name+"' WHERE name='"+currentName+"'"};
                 success = new AsyncCUD().execute(datos).get();
 
-                this.Tournament_Type.setTypename(name);
+                this.Tournament_type.setTypename(name);
             }
         }catch(Exception ex)
         {
