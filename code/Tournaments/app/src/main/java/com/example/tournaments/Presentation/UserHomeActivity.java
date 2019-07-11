@@ -14,12 +14,19 @@ import android.support.v7.app.ActionBar;
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Controllers.SignupController;
 import com.example.tournaments.businessLogic.Controllers.UpdateController;
+import com.example.tournaments.dataAcces.models.Tournament;
+import com.example.tournaments.dataAcces.repositories.TournamentRepository;
+
+import java.util.ArrayList;
 
 import static com.example.tournaments.R.id.bChangeData;
 
 public class UserHomeActivity extends AppCompatActivity {
 
+    private TournamentRepository tournamentRepository;
+    private Tournament tournament;
     String currentUsername;
+    private ArrayList<Tournament> tournaments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +60,7 @@ public class UserHomeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
             }});
 
-
-        bChangeData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    Intent intent = new Intent(UserHomeActivity.this, UserUpdateDataActivity.class);
-                    intent.putExtra("currentUser", currentUsername);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-                }catch(Exception e){
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
-                }
-
-            }});
+        //Toast.makeText(getApplicationContext(), ""+getTournaments(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -75,6 +69,16 @@ public class UserHomeActivity extends AppCompatActivity {
 
 
     }
+
+    /*public ArrayList<Tournament> getTournaments(){
+        tournamentRepository = new TournamentRepository();
+        try{
+            tournaments = tournamentRepository.getAllTournaments();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Paila prro", Toast.LENGTH_SHORT).show();
+        }
+        return tournaments;
+    }*/
 }
 
 /*try {

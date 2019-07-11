@@ -69,8 +69,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Your Name" />
+                android:inputType="textVisiblePassword"
+                android:hint="Your Name"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                android:maxLength="10"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -82,8 +84,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Nickname"/>
+                android:inputType="textVisiblePassword"
+                android:hint="Nickname"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                android:maxLength="10"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -98,7 +102,9 @@
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:hint="Password" />
+                android:hint="Password"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_,.;:-+!*/#$%\{}[]/()=?¡¿'"
+                android:maxLength="10"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -113,7 +119,9 @@
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:hint="Confim password" />
+                android:hint="Confim password"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_,.;:-+!*/#$%\{}[]/()=?¡¿'"
+                android:maxLength="10"/>
 
             <Space
                 android:layout_width="match_parent"

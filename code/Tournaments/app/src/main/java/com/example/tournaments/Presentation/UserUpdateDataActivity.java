@@ -73,22 +73,3 @@ public class UserUpdateDataActivity extends AppCompatActivity {
         });
         }
 }
-
-
-        /*Button btn_signup = (Button) findViewById(R.id.btn_signup);
-        btn_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateController = new UpdateController();
-
-                String name = et_name.getText().toString();
-                String username = et_username.getText().toString();
-                String password = et_password.getText().toString();
-                try{
-                    updateController.updateUser(currentUsername, name, username, password);
-                    Toast.makeText(getApplicationContext(), "Let's check!", Toast.LENGTH_SHORT).show();
-                }catch(Exception e){
-                    Toast.makeText(getApplicationContext(), "The user could not be updated.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
