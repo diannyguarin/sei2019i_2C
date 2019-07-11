@@ -75,7 +75,9 @@
             android:backgroundTint="@color/orangeCorp"
             android:ems="10"
             android:hint="Tournament Name"
-            android:inputType="textPersonName" />
+            android:inputType="textVisiblePassword"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-"
+            android:maxLength="10"/>
 
         <EditText
             android:id="@+id/t_type"
@@ -85,7 +87,9 @@
             android:backgroundTint="@color/blueCorp"
             android:ems="10"
             android:hint="Tournament Type"
-            android:inputType="textPersonName" />
+            android:inputType="textVisiblePassword"
+            android:digits="abcdefghijklmnopqrstuvwxyz"
+            android:maxLength="10"/>
 
         <EditText
             android:id="@+id/t_teamnumber"
@@ -95,7 +99,9 @@
             android:backgroundTint="@color/orangeCorp"
             android:ems="10"
             android:hint="Number of Teams"
-            android:inputType="textPersonName" />
+            android:inputType="textVisiblePassword"
+            android:digits="0123456789"
+            android:maxLength="10"/>
 
         <EditText
             android:id="@+id/t_sport"
@@ -105,7 +111,8 @@
             android:backgroundTint="@color/orangeCorp"
             android:ems="10"
             android:hint="Sport"
-            android:inputType="textPersonName" />
+            android:inputType="textVisiblePassword"
+            android:digits="abcdefghijklmnopqrstuvwxyz"/>
 
         <Space
             android:layout_width="match_parent"
