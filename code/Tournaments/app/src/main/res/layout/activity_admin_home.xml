@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Presentation.AdminHomeActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:clickable="true">
+
+        //IMAGENES
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="222dp"
+            android:layout_height="260dp"
+
+            android:tint="#56FFFFFF"
+            app:srcCompat="@drawable/circuloorange" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="641dp"
+            android:layout_height="379dp"
+
+
+            android:layout_gravity="bottom|right"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:tint="#99FFFFFF"
+            app:srcCompat="@drawable/orangecircle2" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="288dp"
+            android:layout_height="262dp"
+
+            android:layout_gravity="bottom|right"
+            android:tint="#56FFFFFF"
+            app:srcCompat="@drawable/imagen3" />
+
+        <ImageView
+            android:id="@+id/circle"
+            android:layout_width="699dp"
+            android:layout_height="434dp"
+            android:layout_gravity="end|left"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:tint="#B7FFFFFF"
+            app:srcCompat="@drawable/bluecircle2" />
+
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="111dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/padlock" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="201dp"
+            android:layout_height="172dp"
+            android:layout_gravity="bottom|center"
+            app:srcCompat="@drawable/soccer_ball2" />
+
+        <LinearLayout
+            android:layout_width="371dp"
+            android:layout_height="663dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="67dp" />
+
+            <TextView
+                android:id="@+id/tv_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ADMINISTRATOR"
+                android:textColor="@color/blueCorp"
+                android:textSize="36sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="33dp" />
+
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/newTour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:clickable="true"
+                app:srcCompat="@drawable/plus" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bBack"
+            android:layout_width="50dp"
+            android:layout_height="64dp"
+            app:srcCompat="@drawable/backbutton" />
+
+
+    </FrameLayout>
+
+</RelativeLayout>
