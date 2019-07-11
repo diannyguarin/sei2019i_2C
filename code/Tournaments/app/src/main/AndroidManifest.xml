@@ -16,6 +16,7 @@
         <activity android:name=".Presentation.CreateTournamentActivity" />
         <activity android:name=".Presentation.AdminHomeActivity" />
         <activity android:name=".Presentation.UserUpdateDataActivity" />
+        <activity android:name=".Presentation.ListActivity" />
         <activity android:name=".Presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

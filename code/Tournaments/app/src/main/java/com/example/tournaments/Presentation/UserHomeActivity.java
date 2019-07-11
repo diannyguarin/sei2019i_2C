@@ -54,6 +54,20 @@ public class UserHomeActivity extends AppCompatActivity {
             }});
 
 
+        bChangeData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent = new Intent(UserHomeActivity.this, UserUpdateDataActivity.class);
+                    intent.putExtra("currentUser", currentUsername);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }catch(Exception e){
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                }
+
+            }});
+
 
 
 

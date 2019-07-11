@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.AdminHomeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Presentation.ListActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,7 +13,6 @@
         android:clickable="true">
 
         //IMAGENES
-
 
         <ImageView
             android:id="@+id/imageView3"
@@ -27,8 +26,6 @@
             android:id="@+id/imageView2"
             android:layout_width="641dp"
             android:layout_height="379dp"
-
-
             android:layout_gravity="bottom|right"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
@@ -56,13 +53,6 @@
 
 
         <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="111dp"
-            android:layout_height="89dp"
-            android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/padlock" />
-
-        <ImageView
             android:id="@+id/imageView16"
             android:layout_width="201dp"
             android:layout_height="172dp"
@@ -79,35 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="67dp" />
 
-            <TextView
-                android:id="@+id/tv_role"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="ADMINISTRATOR"
-                android:textColor="@color/blueCorp"
-                android:textSize="36sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="33dp" />
-
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/newTour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:clickable="true"
-                app:srcCompat="@drawable/plus" />
-
-            <Button
-                android:id="@+id/btn_listtour"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Tournament List" />
-
         </LinearLayout>
 
         <ImageView
@@ -115,7 +76,25 @@
             android:layout_width="50dp"
             android:layout_height="64dp"
             app:srcCompat="@drawable/backbutton" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
+        <Button
+            android:id="@+id/btn_deletetour"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar miembro" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ListView_tour"
+            android:layout_width="match_parent"
+            android:layout_height="624dp"
+            android:layout_margin="50dp"></ListView>
 
     </FrameLayout>
 

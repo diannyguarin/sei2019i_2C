@@ -20,7 +20,7 @@ public class TournamentRepository {
     public Tournament getTournament() {
         return tour;
     }
-    
+
     public ArrayList<Tournament> getAllTournaments(){ //read
         ArrayList<String> res;
         ArrayList<Tournament> sol = null;
@@ -76,7 +76,7 @@ public class TournamentRepository {
             Class.forName(SQLHelper.driver).newInstance();
             String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournaments(name,admin,sport,type,numberOfTeams) values ('"+name+"', 1, "+sport+", "+type+", "+numTeams+")"};
             succes = new AsyncCUD().execute(datos).get();
-                this.tour =new Tournament(name, sport, type, numTeams);
+            this.tour =new Tournament(name, sport, type, numTeams);
         }catch(Exception ex)
         {
             Log.d("failure in insert", ex.getMessage());
@@ -190,4 +190,3 @@ public class TournamentRepository {
 
 
 }
-
