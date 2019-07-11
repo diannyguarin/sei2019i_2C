@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Presentation.UserHomeActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:clickable="true">
+
+        //IMAGENES
+
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="317dp"
+            android:layout_height="298dp"
+            android:layout_gravity="right"
+            android:tint="#70FFFFFF"
+            app:srcCompat="@drawable/orangecircle3" />
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="370dp"
+            android:layout_height="519dp"
+            android:layout_gravity="bottom"
+            android:tint="#6BFFFFFF"
+            app:srcCompat="@drawable/bluecircle3" />
+
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="145dp"
+            android:layout_height="205dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/playoff" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="201dp"
+            android:layout_height="172dp"
+            android:layout_gravity="bottom|center"
+            app:srcCompat="@drawable/estrategia" />
+
+        <LinearLayout
+            android:layout_width="371dp"
+            android:layout_height="552dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="WELCOME"
+                android:textColor="@color/blueCorp"
+                android:textSize="36sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="69dp" />
+
+            <Button
+                android:id="@+id/bChangeData"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Change Data" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bBack"
+            android:layout_width="67dp"
+            android:layout_height="96dp"
+            app:srcCompat="@drawable/backbutton" />
+
+
+
+    </FrameLayout>
+
+</RelativeLayout>
