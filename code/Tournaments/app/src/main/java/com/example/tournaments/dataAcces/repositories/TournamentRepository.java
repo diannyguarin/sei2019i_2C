@@ -20,21 +20,18 @@ public class TournamentRepository {
     public Tournament getTournament() {
         return tour;
     }
-
+    
     public ArrayList<Tournament> getAllTournaments(){ //read
         ArrayList<String> res;
-        ArrayList<Tournament> sol = null;
+        ArrayList<Tournament> sol = new ArrayList<>();
         try{
             String[] datos = new String[]{"SELECT * from "+ SQLHelper.usr +".Tournaments"};
             res= new AsyncQuery("Tournaments").execute(datos).get();
 
-            String[] splint=new String[0];
+            String[] splint=new String[res.size()*6];
+
             for (int j = 0; j<res.size(); j++){
                 splint=res.get(j).split(";");
-                String sup="";
-                for (int i=0;i<splint.length;i++){
-                    splint[i].trim();
-                }
                 if(splint!=null&&splint.length>0){
                     sol.add(new Tournament(Integer.valueOf(splint[0]),splint[1],Integer.valueOf(splint[2]),Integer.valueOf(splint[3]),Integer.valueOf(splint[4]),Integer.valueOf(splint[5])));
                 }
@@ -76,7 +73,7 @@ public class TournamentRepository {
             Class.forName(SQLHelper.driver).newInstance();
             String[] datos = new String[]{"insert into "+SQLHelper.usr+".Tournaments(name,admin,sport,type,numberOfTeams) values ('"+name+"', 1, "+sport+", "+type+", "+numTeams+")"};
             succes = new AsyncCUD().execute(datos).get();
-            this.tour =new Tournament(name, sport, type, numTeams);
+                this.tour =new Tournament(name, sport, type, numTeams);
         }catch(Exception ex)
         {
             Log.d("failure in insert", ex.getMessage());
@@ -190,3 +187,4 @@ public class TournamentRepository {
 
 
 }
+

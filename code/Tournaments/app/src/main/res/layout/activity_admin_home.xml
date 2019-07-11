@@ -93,6 +93,7 @@
                 android:layout_height="33dp" />
 
 
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/newTour"
                 android:layout_width="match_parent"
@@ -100,13 +101,6 @@
                 android:layout_gravity="bottom|right"
                 android:clickable="true"
                 app:srcCompat="@drawable/plus" />
-
-            <Button
-                android:id="@+id/btn_listtour"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Tournament List" />
 
         </LinearLayout>
 

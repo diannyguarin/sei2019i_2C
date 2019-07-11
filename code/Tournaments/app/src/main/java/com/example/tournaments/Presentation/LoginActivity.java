@@ -13,9 +13,12 @@ import android.widget.Toast;
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Controllers.LoginController;
 import com.example.tournaments.dataAcces.models.Administrator;
+import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.models.User;
+import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox checkBox;
     User userstore = new User();
     Administrator adminstore = new Administrator();
+
+    private TournamentRepository tournamentRepository;
+    private Tournament tournament;
+    private ArrayList<Tournament> tournaments;
 
     public User getUserstore() {
         return userstore;
@@ -49,6 +56,15 @@ public class LoginActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Tournaments");
+
+        Button btn_gotosignup = (Button) findViewById(R.id.btn_gotosingup);
+        btn_gotosignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -75,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     try {
                         userstore = loginController.loginUser(username, pass);
-                        Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, UserHomeListActivity.class);
                         intent.putExtra("currentUser", userstore.getUsername());
                         startActivity(intent);
                         finish();
@@ -87,61 +103,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-
-        Button btn_gotosignup = (Button) findViewById(R.id.btn_gotosingup);
-        btn_gotosignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*if (android.os.Build.VERSION.SDK_INT > 27) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-
-        try {
-
-            //boolean updateuser = user.updateUser("WHAT","THE", "FUCK?");
-            //boolean updateadmin = admin.updateAdmin("qwerty", "231654");
-            User usergotten = user.getUserByUsername("-");
-            Administrator admingotten = admin.getAdminByUsername("qwerty");
-
-            Toast.makeText(getApplicationContext(), ""+usergotten+" "+admingotten, Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-
-            Toast.makeText(getApplicationContext(), "" + e,Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }*/
     }
 
 

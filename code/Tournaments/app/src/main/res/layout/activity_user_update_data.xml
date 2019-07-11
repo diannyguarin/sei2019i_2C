@@ -101,7 +101,10 @@ tools:context=".Presentation.UserUpdateDataActivity">
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:hint="New Name"
-            android:backgroundTint="@color/blueCorp"/>
+            android:backgroundTint="@color/blueCorp"
+            android:inputType="textVisiblePassword"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            android:maxLength="10"/>
 
         <Space
             android:layout_width="match_parent"
@@ -115,8 +118,11 @@ tools:context=".Presentation.UserUpdateDataActivity">
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
+            android:inputType="textVisiblePassword"
             android:hint="New Username"
-            android:backgroundTint="@color/orangeCorp"/>
+            android:backgroundTint="@color/orangeCorp"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            android:maxLength="10"/>
 
         <Space
             android:layout_width="match_parent"
@@ -133,6 +139,8 @@ tools:context=".Presentation.UserUpdateDataActivity">
             android:inputType="textPassword"
             android:hint="New Password"
             android:backgroundTint="@color/orangeCorp"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_,.;:-+!*/#$%\{}[]/()=?¡¿'"
+            android:maxLength="10"
             />
 
         <Button

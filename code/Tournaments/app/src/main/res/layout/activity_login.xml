@@ -87,8 +87,10 @@ tools:context=".Presentation.LoginActivity">
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Username" />
+            android:inputType="textVisiblePassword"
+            android:hint="Username"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            android:maxLength="10"/>
 
         <Space
             android:layout_width="match_parent"
@@ -101,7 +103,9 @@ tools:context=".Presentation.LoginActivity">
             android:layout_gravity="center_horizontal"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="Password" />
+            android:hint="Password"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_,.;:-+!*/#$%\{}[]/()=?¡¿'"
+            android:maxLength="10"/>
 
         <Space
             android:layout_width="match_parent"
