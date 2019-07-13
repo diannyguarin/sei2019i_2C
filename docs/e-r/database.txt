@@ -1,20 +1,14 @@
 CREATE TABLE `Teams` (
   `id` int,
-  `name` varchar(30),
+  `name` varchar(10),
   `user` int,
   PRIMARY KEY (`id`),
   KEY `FK` (`user`)
 );
 
-CREATE TABLE `Status` (
-  `id` int,
-  `name` varchar(10),
-  PRIMARY KEY (`id`)
-);
-
 CREATE TABLE `Tournaments` (
   `id` int,
-  `name` varchar(30),
+  `name` varchar(10),
   `admin` int,
   `sport` int,
   `type` int,
@@ -27,32 +21,26 @@ CREATE TABLE `Users-Tournaments-Teams` (
   `id` int,
   `team` int,
   `user-tournament` int,
-  `octavos` bit,
-  `cuartos` bit,
-  `semifinal` bit,
-  `final` bit,
-  `champ` bit,
-  `bracket` int,
   PRIMARY KEY (`id`),
   KEY `FK` (`team`, `user-tournament`)
 );
 
 CREATE TABLE `Tournament_types` (
   `id` int,
-  `name` varchar(30),
+  `name` varchar(10),
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `Sports` (
   `id` int,
-  `name` varchar(20),
+  `name` varchar(10),
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `Administrator` (
   `id` int,
   `username` varchar(10),
-  `password` varchar(20),
+  `password` varchar(10),
   PRIMARY KEY (`id`)
 );
 
@@ -60,40 +48,25 @@ CREATE TABLE `Matchups` (
   `id` int,
   `localTeam` int,
   `visitorTeam` int,
-  `localScore` int,
-  `visitorScore` int,
-  `localPenaltyGoals` int,
-  `visitorPenaltyGoals` int,
+  `phase` varchar(8),
+  `bracket` int,
+  `winner` varchar(7),
   PRIMARY KEY (`id`),
   KEY `FK` (`localTeam`, `visitorTeam`)
 );
 
 CREATE TABLE `Users` (
   `id` int,
-  `name` varchar(50),
   `username` varchar(10),
-  `password` varchar(20),
+  `password` varchar(10),
   PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `Requests` (
-  `id` int,
-  `user` int,
-  `sport` int,
-  `type` int,
-  `numberOfTeams` int,
-  `status` int,
-  `tournament` int,
-  PRIMARY KEY (`id`),
-  KEY `FK` (`user`, `sport`, `type`, `status`, `tournament`)
 );
 
 CREATE TABLE `Users-Tournaments` (
   `id` int,
-  `name` varchar(30),
+  `name` varchar(10),
   `user` int,
   `tournament` int,
   PRIMARY KEY (`id`),
   KEY `FK` (`user`, `tournament`)
 );
-
