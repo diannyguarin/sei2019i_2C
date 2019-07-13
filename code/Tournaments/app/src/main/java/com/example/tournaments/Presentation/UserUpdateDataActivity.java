@@ -69,6 +69,7 @@ public class UserUpdateDataActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserUpdateDataActivity.this, UserHomeActivity.class);
                 intent.putExtra("currentUser", currentUsername);
                 startActivity(intent);
+                finish();
             }
         });
         }

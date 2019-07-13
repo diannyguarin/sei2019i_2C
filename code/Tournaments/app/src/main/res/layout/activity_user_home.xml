@@ -75,6 +75,13 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Change Data" />
 
+            <Button
+                android:id="@+id/bTournaments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Tournaments" />
+
         </LinearLayout>
 
         <ImageView

@@ -84,17 +84,17 @@ public class LoginActivity extends AppCompatActivity {
                         adminstore = loginController.loginAdmin(username, pass);
                         Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                         startActivity(intent);
-                        finish();
+
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "The data you have entered is not correct.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     try {
                         userstore = loginController.loginUser(username, pass);
-                        Intent intent = new Intent(LoginActivity.this, UserHomeListActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
                         intent.putExtra("currentUser", userstore.getUsername());
                         startActivity(intent);
-                        finish();
+
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "The data you have entered is not correct.", Toast.LENGTH_SHORT).show();
                     }

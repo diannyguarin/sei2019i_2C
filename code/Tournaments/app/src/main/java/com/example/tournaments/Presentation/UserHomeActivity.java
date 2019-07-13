@@ -36,6 +36,8 @@ public class UserHomeActivity extends AppCompatActivity {
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
 
+
+
         Button bChangeData = (Button) findViewById(R.id.bChangeData);
         bChangeData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +61,22 @@ public class UserHomeActivity extends AppCompatActivity {
                     startActivity(intent1);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
             }});
+        Button bTournaments = (Button) findViewById(R.id.bTournaments);
+        bTournaments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent3 = new Intent(UserHomeActivity.this, UserHomeListActivity.class);
 
+                    intent3.putExtra("currentUser", currentUsername);
+                    startActivity(intent3);
+
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }catch(Exception e){
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                }
+
+            }});
         //Toast.makeText(getApplicationContext(), ""+getTournaments(), Toast.LENGTH_SHORT).show();
 
 
