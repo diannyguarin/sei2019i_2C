@@ -38,7 +38,6 @@ public class AsyncQuery extends AsyncTask<String,Void, ArrayList<String>> {
             connect = DriverManager.getConnection(url, username, password);
             preparedStatement = connect.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
-            int size = preparedStatement.getFetchSize();
             switch(type){ 
                 case "Administrator":
                     while (resultSet.next()) {
@@ -70,6 +69,22 @@ public class AsyncQuery extends AsyncTask<String,Void, ArrayList<String>> {
                         results.add(resultSet.getInt(1)+";"+resultSet.getString(2)+";"+resultSet.getInt(3));
                     }
                     break;
+                case "Users_tournaments_teams":
+                    while (resultSet.next()) {
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getInt(2) + ";" + resultSet.getInt(3));
+                    }
+                    break;
+                case "Users_tournaments":
+                    while (resultSet.next()) {
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getString(2) + ";" + resultSet.getInt(3) + ";" + resultSet.getInt(4));
+                    }
+                    break;
+                case "Matchups":
+                    while (resultSet.next()) {
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getInt(2) + ";" + resultSet.getInt(3) + ";" + resultSet.getString(4) + ";" + resultSet.getInt(5) + ";" + resultSet.getString(6));
+                    }
+                    break;
+
             }
            
 

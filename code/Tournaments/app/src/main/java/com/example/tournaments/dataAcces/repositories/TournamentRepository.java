@@ -7,7 +7,6 @@ import com.example.tournaments.dataAcces.databases.AsyncQuery;
 import com.example.tournaments.dataAcces.databases.SQLHelper;
 import com.example.tournaments.dataAcces.models.Tournament;
 
-
 import java.util.ArrayList;
 
 public class TournamentRepository {
@@ -61,6 +60,28 @@ public class TournamentRepository {
             }
         }catch(Exception ex)
         {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return this.tour;
+    }
+
+    public Tournament getTournamentById(int id) { //read
+        ArrayList<String> res;
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Tournaments WHERE id=" + id};
+            res = new AsyncQuery("Tournaments").execute(datos).get();
+
+            String[] splint = new String[0];
+            if (res.size() > 0)
+                splint = res.get(0).split(" ");
+            String sup = "";
+            for (int i = 0; i < splint.length; i++) {
+                splint[i].trim();
+            }
+            if (splint != null && splint.length > 0) {
+                this.tour = new Tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3]), Integer.valueOf(splint[4]), Integer.valueOf(splint[5]));
+            }
+        } catch (Exception ex) {
             Log.d("failure in query", ex.getMessage());
         }
         return this.tour;
@@ -120,7 +141,7 @@ public class TournamentRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(admin > 0){
-                datos = new String[]{"update "+SQLHelper.usr+".Tournaments set admin='"+String.valueOf(admin)+"' WHERE name='"+currentName+"'"};
+                datos = new String[]{"update " + SQLHelper.usr + ".Tournaments set admin='" + admin + "' WHERE name='" + currentName + "'"};
                 success = new AsyncCUD().execute(datos).get();
                 this.tour.setAdmin(admin);
             }
@@ -138,7 +159,7 @@ public class TournamentRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(sport > 0){
-                datos = new String[]{"update "+SQLHelper.usr+".Tournaments set sport='"+String.valueOf(sport)+"' WHERE name='"+currentName+"'"};
+                datos = new String[]{"update " + SQLHelper.usr + ".Tournaments set sport='" + sport + "' WHERE name='" + currentName + "'"};
                 success = new AsyncCUD().execute(datos).get();
                 this.tour.setSport(sport);
             }
@@ -156,7 +177,7 @@ public class TournamentRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(type > 0){
-                datos = new String[]{"update "+SQLHelper.usr+".Tournaments set type='"+String.valueOf(type)+"' WHERE name='"+currentName+"'"};
+                datos = new String[]{"update " + SQLHelper.usr + ".Tournaments set type='" + type + "' WHERE name='" + currentName + "'"};
                 success = new AsyncCUD().execute(datos).get();
                 this.tour.setType(type);
             }
@@ -174,7 +195,7 @@ public class TournamentRepository {
             String[] datos = new String[]{};
             Class.forName(SQLHelper.driver).newInstance();
             if(numTeams > 1){
-                datos = new String[]{"update "+SQLHelper.usr+".Tournaments set numberOfTeams='"+String.valueOf(numTeams)+"' WHERE name='"+currentName+"'"};
+                datos = new String[]{"update " + SQLHelper.usr + ".Tournaments set numberOfTeams='" + numTeams + "' WHERE name='" + currentName + "'"};
                 success = new AsyncCUD().execute(datos).get();
                 this.tour.setNumberOfTeams(numTeams);
             }
@@ -185,6 +206,34 @@ public class TournamentRepository {
         return success;
     }
 
+    public boolean deleteTournamentbyName(String name) { //update
+        boolean success = false;
+        try {
+            String[] datos = new String[]{};
+            Class.forName(SQLHelper.driver).newInstance();
+            if (name != "") {
+                datos = new String[]{"delete from " + SQLHelper.usr + ".Tournaments WHERE name='" + name + "'"};
+                success = new AsyncCUD().execute(datos).get();
+            }
+        } catch (Exception ex) {
+            Log.d("failure in delete", ex.getMessage());
+        }
+        return success;
+    }
 
+    public boolean deleteTournamentById(int id) { //update
+        boolean success = false;
+        try {
+            String[] datos = new String[]{};
+            Class.forName(SQLHelper.driver).newInstance();
+            if (id > 0) {
+                datos = new String[]{"delete from " + SQLHelper.usr + ".Tournaments WHERE id=" + id};
+                success = new AsyncCUD().execute(datos).get();
+            }
+        } catch (Exception ex) {
+            Log.d("failure in delete", ex.getMessage());
+        }
+        return success;
+    }
 }
 

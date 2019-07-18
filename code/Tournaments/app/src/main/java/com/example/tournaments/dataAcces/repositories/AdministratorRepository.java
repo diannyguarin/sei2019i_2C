@@ -20,6 +20,27 @@ public class AdministratorRepository {
         return administrator;
     }
 
+    public ArrayList<Administrator> getAllAdministrators() { //read
+        ArrayList<String> res;
+        ArrayList<Administrator> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Administrator"};
+            res = new AsyncQuery("Administrator").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new Administrator(Integer.valueOf(splint[0]), splint[1], splint[2]));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public Administrator getAdminByUsername(String name){ //read
         ArrayList<String> res;
         try{
@@ -38,6 +59,28 @@ public class AdministratorRepository {
             }
         }catch(Exception ex)
         {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return this.administrator;
+    }
+
+    public Administrator getAdminById(int id) { //read
+        ArrayList<String> res;
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Administrator WHERE id=" + id};
+            res = new AsyncQuery("Administrator").execute(datos).get();
+
+            String[] splint = new String[0];
+            if (res.size() > 0)
+                splint = res.get(0).split(";");
+            String sup = "";
+            for (int i = 0; i < splint.length; i++) {
+                splint[i].trim();
+            }
+            if (splint != null && splint.length > 0) {
+                this.administrator = new Administrator(Integer.valueOf(splint[0]), splint[1], splint[2]);
+            }
+        } catch (Exception ex) {
             Log.d("failure in query", ex.getMessage());
         }
         return this.administrator;
@@ -102,6 +145,36 @@ public class AdministratorRepository {
         }catch(Exception ex)
         {
             Log.d("failure in update", ex.getMessage());
+        }
+        return succes;
+    }
+
+    public boolean DeleteAdminByUsername(String username) { //delete
+        boolean succes = false;
+        try {
+            String[] datos = new String[]{};
+            Class.forName(SQLHelper.driver).newInstance();
+            if (username != "") {
+                datos = new String[]{"delete from " + SQLHelper.usr + ".Administrator where username='" + username + "'"};
+                succes = new AsyncCUD().execute(datos).get();
+            }
+        } catch (Exception ex) {
+            Log.d("failure in delete", ex.getMessage());
+        }
+        return succes;
+    }
+
+    public boolean DeleteAdminById(int id) { //delete
+        boolean succes = false;
+        try {
+            String[] datos = new String[]{};
+            Class.forName(SQLHelper.driver).newInstance();
+            if (id > 0) {
+                datos = new String[]{"delete from " + SQLHelper.usr + ".Administrator where id=" + id};
+                succes = new AsyncCUD().execute(datos).get();
+            }
+        } catch (Exception ex) {
+            Log.d("failure in delete", ex.getMessage());
         }
         return succes;
     }
