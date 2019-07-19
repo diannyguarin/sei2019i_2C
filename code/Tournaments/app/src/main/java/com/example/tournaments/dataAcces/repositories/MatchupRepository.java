@@ -41,11 +41,53 @@ public class MatchupRepository {
         return sol;
     }
 
+    public ArrayList<Matchup> getMatchupsByLocalTeam(int localTeamId) { //read
+        ArrayList<String> res;
+        ArrayList<Matchup> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Matchups where localTeam=" + localTeamId};
+            res = new AsyncQuery("Matchups").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new Matchup(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2]), splint[3], Integer.valueOf(splint[4]), splint[5]));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
 
     public Matchup getMatchupById(int id) { //read
         ArrayList<String> res;
         try {
             String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Matchups WHERE id=" + id};
+            res = new AsyncQuery("Matchups").execute(datos).get();
+
+            String[] splint = new String[0];
+            if (res.size() > 0)
+                splint = res.get(0).split(";");
+            String sup = "";
+            for (int i = 0; i < splint.length; i++) {
+                splint[i].trim();
+            }
+            if (splint != null && splint.length > 0) {
+                this.matchup = new Matchup(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2]), splint[3], Integer.valueOf(splint[4]), splint[5]);
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return this.matchup;
+    }
+
+    public Matchup getMatchupByLocalAndVisitor(int localId, int visitorId) { //read
+        ArrayList<String> res;
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Matchups WHERE localTeam=" + localId + " and visitorTeam=" + visitorId};
             res = new AsyncQuery("Matchups").execute(datos).get();
 
             String[] splint = new String[0];

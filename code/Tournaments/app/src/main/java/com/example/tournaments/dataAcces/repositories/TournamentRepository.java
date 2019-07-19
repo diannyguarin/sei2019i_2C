@@ -42,6 +42,48 @@ public class TournamentRepository {
         return sol;
     }
 
+    public ArrayList<Tournament> getTournamentsBySport(int sportId) { //read
+        ArrayList<String> res;
+        ArrayList<Tournament> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Tournaments where sport=" + sportId};
+            res = new AsyncQuery("Tournaments").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new Tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3]), Integer.valueOf(splint[4]), Integer.valueOf(splint[5])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
+    public ArrayList<Tournament> getTournamentsByTournament_type(int tournament_typeId) { //read
+        ArrayList<String> res;
+        ArrayList<Tournament> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Tournaments where sport=" + tournament_typeId};
+            res = new AsyncQuery("Tournaments").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new Tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3]), Integer.valueOf(splint[4]), Integer.valueOf(splint[5])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public Tournament getTournamentByName(String name){ //read
         ArrayList<String> res;
         try{

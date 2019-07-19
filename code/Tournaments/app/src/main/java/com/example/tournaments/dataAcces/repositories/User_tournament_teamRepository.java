@@ -41,6 +41,27 @@ public class User_tournament_teamRepository {
         return sol;
     }
 
+    public ArrayList<User_tournament_team> getUser_tournament_teamsByUser_tournament(int user_tournamentId) { //read
+        ArrayList<String> res;
+        ArrayList<User_tournament_team> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Users_tournaments_teams where user_tournament=" + user_tournamentId};
+            res = new AsyncQuery("Users_tournaments_teams").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new User_tournament_team(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public User_tournament_team getUser_tournament_teamById(int id) { //read
         ArrayList<String> res;
         try {

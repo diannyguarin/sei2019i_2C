@@ -41,6 +41,27 @@ public class TeamRepository {
         return sol;
     }
 
+    public ArrayList<Team> getTeamsByUser(int userId) { //read
+        ArrayList<String> res;
+        ArrayList<Team> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Teams where user=" + userId};
+            res = new AsyncQuery("Teams").execute(datos).get();
+
+            String[] splint;
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint.length > 0) {
+                    sol.add(new Team(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public Team getTeamByName(String name) { //read
         ArrayList<String> res;
         try {

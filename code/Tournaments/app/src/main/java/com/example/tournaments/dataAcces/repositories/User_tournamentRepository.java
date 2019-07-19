@@ -41,6 +41,27 @@ public class User_tournamentRepository {
         return sol;
     }
 
+    public ArrayList<User_tournament> getUser_tournamentsByUser(int userId) { //read
+        ArrayList<String> res;
+        ArrayList<User_tournament> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Users_tournaments where user=" + userId};
+            res = new AsyncQuery("Users_tournaments").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new User_tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public User_tournament getUser_tournamentByName(String name) { //read
         ArrayList<String> res;
         try {
