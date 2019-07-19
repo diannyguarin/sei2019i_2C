@@ -8,13 +8,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/trophymain"
         android:label="Tournaments"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/trophymain"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Presentation.UserHomeListActivity">
-        </activity>
+        <activity
+            android:name=".Presentation.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Presentation.UserHomeListActivity"></activity>
         <activity android:name=".Presentation.SignupActivity" />
-        <activity android:name=".Presentation.UserHomeActivity"/>
+        <activity android:name=".Presentation.UserHomeActivity" />
         <activity android:name=".Presentation.CreateTournamentActivity" />
         <activity android:name=".Presentation.AdminHomeActivity" />
         <activity android:name=".Presentation.UserUpdateDataActivity" />
@@ -25,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
