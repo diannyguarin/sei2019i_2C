@@ -1,21 +1,23 @@
 package com.example.tournaments.Presentation;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import com.example.tournaments.R;
+
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,BlankFragment.OnFragmentInteractionListener,UpdateData.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +80,19 @@ public class MenuActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment f = null;
 
         if (id == R.id.nav_home) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.containermain,R.layout.activity_user_home_list).commit();
+            f = new BlankFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.containermain,f).commit();
+
         } else if (id == R.id.nav_tournaments) {
 
         } else if (id == R.id.nav_teams) {
 
         } else if (id == R.id.nav_update) {
-
+            f = new UpdateData();
+            getSupportFragmentManager().beginTransaction().replace(R.id.containermain,f).commit();
         } else if (id == R.id.nav_logout) {
 
         }
@@ -94,5 +100,10 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
