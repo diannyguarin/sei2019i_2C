@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
+import com.example.tournaments.businessLogic.Controllers.PopulateTournamentListController;
 import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 
@@ -28,6 +29,8 @@ public class UserHomeListActivity extends Prueba {
     private Tournament tournament;
     private ArrayList<Tournament> tournaments = new ArrayList<>();
     String currentUsername;
+    private PopulateTournamentListController populateTournamentListController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class UserHomeListActivity extends Prueba {
         actionBar.setTitle("Tournament list");
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
+
+
 
         Button bBackHome = (Button) findViewById(R.id.bBackHome);
         bBackHome.setOnClickListener(new View.OnClickListener() {
@@ -60,18 +65,9 @@ public class UserHomeListActivity extends Prueba {
 
     }
 
-    public ArrayList<Tournament> getTournaments(){
-        tournamentRepository = new TournamentRepository();
-        try{
-            tournaments = tournamentRepository.getAllTournaments();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Paila prro", Toast.LENGTH_SHORT).show();
-        }
-        return tournaments;
-    }
-
     public void populateTournamentList(){
-        TournamentsAdapter tournamentsAdapter = new TournamentsAdapter(UserHomeListActivity.this, getTournaments());
+        populateTournamentListController = new PopulateTournamentListController();
+        TournamentsAdapter tournamentsAdapter = new TournamentsAdapter(UserHomeListActivity.this, populateTournamentListController.getTournaments());
         listView.setAdapter(tournamentsAdapter);
     }
 
@@ -97,9 +93,10 @@ public class UserHomeListActivity extends Prueba {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
+                PopulateTournamentListController populateTournamentListController = new PopulateTournamentListController();
                 Intent intent3 = new Intent();
                 intent3.putExtra("currentUser", currentUsername);
-                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, getTournaments());
+                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, populateTournamentListController.getTournaments());
                 listView.setAdapter(tournamentsAdapter2);
 
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(UserHomeListActivity.this);
