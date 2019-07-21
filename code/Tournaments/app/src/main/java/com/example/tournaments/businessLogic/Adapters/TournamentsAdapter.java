@@ -28,7 +28,7 @@ public class TournamentsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Tournament getItem(int position) {
         return tournaments.get(position);
     }
 

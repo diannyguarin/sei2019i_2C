@@ -57,7 +57,7 @@ public class DeleteTournamentController {
     public void returnHome() {
 
         Intent home_intent = new Intent(getApplicationContext(),
-                ListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                UserHomeListActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         startActivity(home_intent);
     }*/

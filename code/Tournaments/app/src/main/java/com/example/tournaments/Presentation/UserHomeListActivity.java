@@ -1,10 +1,13 @@
 package com.example.tournaments.Presentation;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,18 +52,12 @@ public class UserHomeListActivity extends Prueba {
                 }
 
             }});
-
         listView = (ListView) findViewById(R.id.list);
         populateTournamentList();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tournament = tournaments.get(tournament.getId_torneo());
-                Intent intent4 = new Intent(view.getContext(), TournamentActivity.class);
-                intent4.putExtra("currentUser", currentUsername);
-                startActivity(intent4);
-            }
-        });
+        //selectItem_Clik();
+        deleteItem_Clik();
+
+
     }
 
     public ArrayList<Tournament> getTournaments(){
@@ -78,9 +75,67 @@ public class UserHomeListActivity extends Prueba {
         listView.setAdapter(tournamentsAdapter);
     }
 
-   /* public void onItemClick(AdapterView<?>parent,View view, int position,long id){
-        Intent intent4 = new Intent(view.getContext(), TournamentActivity.class);
-        intent4.putExtra("currentUser", currentUsername);
-        startActivity(intent4);
-    }*/
+    private void selectItem_Clik(){
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                try{
+                    Intent intent3 = new Intent(UserHomeListActivity.this, UserHomeActivity.class);
+                    intent3.putExtra("currentUser", currentUsername);
+                    startActivity(intent3);
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }catch(Exception e){
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                }
+                /*Toast.makeText(getApplicationContext(),"Pulsaste el elemento"+ String.valueOf(position)+ "de la lista ", Toast.LENGTH_SHORT).show(); */           }
+        });
+
+    }
+
+    private void deleteItem_Clik() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
+                Intent intent3 = new Intent();
+                intent3.putExtra("currentUser", currentUsername);
+                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, getTournaments());
+                listView.setAdapter(tournamentsAdapter2);
+
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(UserHomeListActivity.this);
+                dialogo1.setTitle("Important");
+                dialogo1.setMessage("Â¿ You want to eliminate this tournament ?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        try{
+                            Intent intent3 = new Intent();
+                            intent3.putExtra("currentUser", currentUsername);
+                            //Object toRemove =  tournamentsAdapter2.getItem(position);
+                            //tournamentsAdapter2.remove();
+                            tournamentRepository.deleteTournamentById((int) tournamentsAdapter2.getItem(position).getId_torneo());
+                            tournamentsAdapter2.notifyDataSetChanged();
+                            Toast.makeText(getApplicationContext(), "Torneo Borrado", Toast.LENGTH_SHORT).show();
+                        }catch(Exception e){
+                            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                dialogo1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                    }
+                });
+                dialogo1.show();
+                return false;
+            }
+        });
+    }
+
+
+
+
+
 }
+
+
+

@@ -22,7 +22,6 @@
         <activity android:name=".Presentation.MyTournamentsActivity"/>
         <activity android:name=".Presentation.TournamentActivity"/>
         <activity android:name=".Presentation.TeamsActivity"/>
-        <activity android:name=".Presentation.NewTeamActivity"/>
 
         <activity android:name=".Presentation.LoginActivity">
             <intent-filter>

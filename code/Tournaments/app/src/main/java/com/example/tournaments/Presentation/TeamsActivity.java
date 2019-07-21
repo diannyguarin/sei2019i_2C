@@ -41,15 +41,6 @@ public class TeamsActivity extends Prueba{
 
 
 
-        ImageView bAdd = (ImageView) findViewById(R.id.fab);
-        bAdd.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent1 = new Intent(TeamsActivity.this, NewTeamActivity.class);
-            startActivity(intent1);
-            Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-        }});
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
         /*fab.setOnClickListener(new View.OnClickListener() {
