@@ -18,7 +18,7 @@ public class TeamsAdapter extends BaseAdapter {
     Context context;
     ArrayList<Team> teams = new ArrayList<>();
 
-    public TeamsAdapter(Context context, ArrayList<Team> tournaments){
+    public TeamsAdapter(Context context, ArrayList<Team> teams){
         this.context = context;
         this.teams = teams;
     }
@@ -44,12 +44,12 @@ public class TeamsAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.team_list, parent, false);
         }
 
-        Tournament tempTournament = (Tournament) getItem(position);
+        Team tempTeam = (Team) getItem(position);
 
         TextView tvName = (TextView)convertView.findViewById(R.id.tvName);
 
 
-        tvName.setText(tempTournament.getName());
+        tvName.setText(tempTeam.getName());
 
         return convertView;
     }
