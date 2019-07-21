@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -83,7 +84,9 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         adminstore = loginController.loginAdmin(username, pass);
                         Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                        intent.putExtra("currentUser", adminstore.getUsername());
                         startActivity(intent);
+                        finish();
 
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "The data you have entered is not correct.", Toast.LENGTH_SHORT).show();
@@ -94,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, UserHomeListActivity.class);
                         intent.putExtra("currentUser", userstore.getUsername());
                         startActivity(intent);
+                        finish();
 
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "The data you have entered is not correct.", Toast.LENGTH_SHORT).show();

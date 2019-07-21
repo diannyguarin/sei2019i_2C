@@ -43,6 +43,7 @@ public class MyTournamentsActivity  extends Prueba {
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    finish();
                 }catch(Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }

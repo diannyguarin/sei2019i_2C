@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
+import com.example.tournaments.businessLogic.Controllers.DeleteTournamentController;
 import com.example.tournaments.businessLogic.Controllers.PopulateTournamentListController;
 import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
@@ -29,8 +30,9 @@ public class UserHomeListActivity extends Prueba {
     private Tournament tournament;
     private ArrayList<Tournament> tournaments = new ArrayList<>();
     String currentUsername;
-    private PopulateTournamentListController populateTournamentListController;
+    //cambio
 
+    private PopulateTournamentListController populateTournamentListController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,6 @@ public class UserHomeListActivity extends Prueba {
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
 
-
-
         Button bBackHome = (Button) findViewById(R.id.bBackHome);
         bBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +52,7 @@ public class UserHomeListActivity extends Prueba {
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    finish();
                 }catch(Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -64,6 +65,18 @@ public class UserHomeListActivity extends Prueba {
 
 
     }
+
+    public ArrayList<Tournament> getTournaments(){
+        tournamentRepository = new TournamentRepository();
+        try{
+            tournaments = tournamentRepository.getAllTournaments();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Paila prro", Toast.LENGTH_SHORT).show();
+        }
+        return tournaments;
+    }
+
+    // Cambio
 
     public void populateTournamentList(){
         populateTournamentListController = new PopulateTournamentListController();
@@ -81,6 +94,7 @@ public class UserHomeListActivity extends Prueba {
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    finish();
                 }catch(Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -93,10 +107,9 @@ public class UserHomeListActivity extends Prueba {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
-                PopulateTournamentListController populateTournamentListController = new PopulateTournamentListController();
                 Intent intent3 = new Intent();
                 intent3.putExtra("currentUser", currentUsername);
-                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, populateTournamentListController.getTournaments());
+                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, getTournaments());
                 listView.setAdapter(tournamentsAdapter2);
 
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(UserHomeListActivity.this);

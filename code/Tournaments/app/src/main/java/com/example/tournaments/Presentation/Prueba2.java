@@ -11,22 +11,21 @@ import android.content.Intent;
 
 import com.example.tournaments.R;
 
-public class Prueba extends AppCompatActivity{
+public class Prueba2 extends AppCompatActivity{
 
     String currentUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_base2);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.commonmenu,menu);
+        getMenuInflater().inflate(R.menu.commonmenu2,menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -36,30 +35,15 @@ public class Prueba extends AppCompatActivity{
         if (id==R.id.menuHome){
             //ver lista de torneos disponibles
             Toast.makeText(this, "Home menu is cliked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Prueba.this, UserHomeListActivity.class);
+            Intent intent = new Intent(Prueba2.this, AdminHomeActivity.class);
             intent.putExtra("currentUser", currentUsername);
             startActivity(intent);
             finish();
         }else
-        if (id==R.id.menuTournaments){
+        if (id==R.id.menuCreateTournaments){
             //ver lista de torneos disponibles
             Toast.makeText(this, "Tournaments menu is cliked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Prueba.this, MyTournamentsActivity.class);
-            intent.putExtra("currentUser", currentUsername);
-            startActivity(intent);
-            finish();
-        }else
-        if (id==R.id.menuTeams){
-            //ver lista de torneos disponibles
-            Toast.makeText(this, "Teams menu is cliked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Prueba.this, TeamsActivity.class);
-            intent.putExtra("currentUser", currentUsername);
-            startActivity(intent);
-        }else
-        if (id==R.id.menuUpdate){
-            //ver lista de torneos disponibles
-            Toast.makeText(this, "Update menu is cliked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Prueba.this, UserUpdateDataActivity.class);
+            Intent intent = new Intent(Prueba2.this, CreateTournamentActivity.class);
             intent.putExtra("currentUser", currentUsername);
             startActivity(intent);
             finish();
@@ -67,15 +51,12 @@ public class Prueba extends AppCompatActivity{
         if (id==R.id.menuLogout){
             //ver lista de torneos disponibles
             Toast.makeText(this, "Bye Bye", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Prueba.this, LoginActivity.class);
+            Intent intent = new Intent(Prueba2.this, LoginActivity.class);
             intent.putExtra("currentUser", currentUsername);
             startActivity(intent);
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 }

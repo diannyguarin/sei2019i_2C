@@ -8,18 +8,10 @@
         android:title="Home"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menuTournaments"
+        android:id="@+id/menuCreateTournaments"
         android:icon="@drawable/ic_cup"
-        android:title="My Tournaments"
+        android:title=" Create Tournaments"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/menuTeams"
-        android:icon="@drawable/ic_team"
-        android:title="Teams" />
-    <item
-        android:id="@+id/menuUpdate"
-        android:icon="@drawable/ic_update"
-        android:title="Update" />
     <item
         android:id="@+id/menuLogout"
         android:icon="@drawable/ic_logout"

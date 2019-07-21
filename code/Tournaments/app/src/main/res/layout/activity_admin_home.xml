@@ -76,7 +76,7 @@
             android:orientation="vertical">
 
             <Space
-                android:layout_width="match_parent"
+                android:layout_width="255dp"
                 android:layout_height="67dp" />
 
             <TextView
@@ -93,23 +93,20 @@
                 android:layout_height="33dp" />
 
 
-
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/newTour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:clickable="true"
                 app:srcCompat="@drawable/plus" />
 
+            <ListView
+                android:id="@+id/list2"
+                android:layout_width="match_parent"
+                android:layout_height="370dp"></ListView>
+
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/bBack"
-            android:layout_width="50dp"
-            android:layout_height="64dp"
-            app:srcCompat="@drawable/backbutton" />
-
 
     </FrameLayout>
 

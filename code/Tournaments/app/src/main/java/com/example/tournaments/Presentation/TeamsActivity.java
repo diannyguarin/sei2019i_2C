@@ -16,9 +16,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TeamsAdapter;
+import com.example.tournaments.businessLogic.Controllers.CreateTournamentController;
+import com.example.tournaments.businessLogic.Controllers.CreateTeamController;
+import com.example.tournaments.businessLogic.Controllers.UpdateController;
 import com.example.tournaments.dataAcces.models.Team;
 import com.example.tournaments.dataAcces.repositories.TeamRepository;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
+import com.example.tournaments.dataAcces.repositories.UserRepository;
 
 
 import java.util.ArrayList;
@@ -28,6 +32,8 @@ public class TeamsActivity extends Prueba{
     private TeamRepository teamRepository;
     private Team team;
     private ArrayList<Team> teams = new ArrayList<>();
+    private UserRepository userRepository;
+    private CreateTeamController createTeamController;
     String currentUsername;
 
     @Override
@@ -38,9 +44,6 @@ public class TeamsActivity extends Prueba{
         actionBar.setTitle("Teams");
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
-
-
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
         /*fab.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +69,7 @@ public class TeamsActivity extends Prueba{
                 Intent intent4 = new Intent(view.getContext(), TournamentActivity.class);
                 intent4.putExtra("currentUser", currentUsername);
                 startActivity(intent4);
+                finish();
             }
         });
     }
@@ -89,6 +93,13 @@ public class TeamsActivity extends Prueba{
         AlertDialog.Builder builder = new AlertDialog.Builder(TeamsActivity.this);
         final View view = LayoutInflater.from(TeamsActivity.this).inflate(R.layout.dialogo_new_team, null);
         builder.setView(view);
+        Bundle extras = this.getIntent().getExtras();
+        currentUsername = extras.getString("currentUser");
+
+        createTeamController = new CreateTeamController();
+
+        userRepository = new UserRepository();
+
 
         final EditText edtTitulo = view.findViewById(R.id.edtTitulo);
         builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
@@ -97,11 +108,10 @@ public class TeamsActivity extends Prueba{
                 String nombre = edtTitulo.getText().toString().trim();
 
                 if (nombre.length()>0){
-
-                    //createTeam(nombre,user);
-
+                    createTeamController.createTeam(nombre, userRepository.getUserByUsername(currentUsername).getId());
+                    Toast.makeText(getApplicationContext(),"Sucessfull", Toast.LENGTH_SHORT).show();
                 }else
-                    Toast.makeText(getApplicationContext(),"nonoono", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Error name Team", Toast.LENGTH_SHORT).show();
             }
         });
 

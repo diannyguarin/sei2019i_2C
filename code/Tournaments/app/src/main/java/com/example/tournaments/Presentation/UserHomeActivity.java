@@ -47,6 +47,7 @@ public class UserHomeActivity extends Prueba {
                         intent.putExtra("currentUser", currentUsername);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                        finish();
                     }catch(Exception e){
                         Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
@@ -60,6 +61,7 @@ public class UserHomeActivity extends Prueba {
                     Intent intent1 = new Intent(UserHomeActivity.this, LoginActivity.class);
                     startActivity(intent1);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    finish();
             }});
         Button bTournaments = (Button) findViewById(R.id.bTournaments);
         bTournaments.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +72,7 @@ public class UserHomeActivity extends Prueba {
 
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
-
+                    finish();
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
                 }catch(Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();

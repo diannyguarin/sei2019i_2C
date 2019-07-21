@@ -16,7 +16,7 @@ import com.example.tournaments.dataAcces.repositories.SportRepository;
 import com.example.tournaments.dataAcces.repositories.TypeRepository;
 import com.example.tournaments.dataAcces.repositories.UserRepository;
 
-public class CreateTournamentActivity extends AppCompatActivity {
+public class CreateTournamentActivity extends Prueba2 {
     private EditText t_name;
     private EditText t_type;
     private EditText t_teamnumber;
@@ -28,6 +28,7 @@ public class CreateTournamentActivity extends AppCompatActivity {
     private TypeRepository typeRepository;
     private int sport;
     private int tournType;
+    String currentUsername;
 
     //private CreateTournamentController newtourController;
 
@@ -35,6 +36,9 @@ public class CreateTournamentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_create_tournament);
+
+        Bundle extras = this.getIntent().getExtras();
+        currentUsername = extras.getString("currentUser");
 
         t_name = (EditText) findViewById(R.id.t_name);
         t_type = (EditText) findViewById(R.id.t_type);
