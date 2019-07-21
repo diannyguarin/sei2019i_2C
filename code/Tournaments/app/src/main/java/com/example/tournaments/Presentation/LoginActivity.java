@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     try {
                         userstore = loginController.loginUser(username, pass);
-                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, UserHomeListActivity.class);
                         intent.putExtra("currentUser", userstore.getUsername());
                         startActivity(intent);
 

@@ -18,9 +18,9 @@ import java.util.Iterator;
 
 public class ListActivity extends AppCompatActivity {
 
-    Button btn_deletetour;
+
     ListView ListView_tour;
-    TextView tName, tSport;
+
     private TournamentRepository tournamentRepository;
 
     @Override
@@ -32,7 +32,6 @@ public class ListActivity extends AppCompatActivity {
         tournamentRepository = new TournamentRepository();
         ArrayList tours = tournamentRepository.getAllTournaments();
         ArrayAdapter adapter2 = new ArrayAdapter(ListActivity.this,R.layout.formato_fila,tours);
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,android.R.layout.simple_list_item_1,tours);
         ListView_tour.setAdapter(adapter2);
         
     }

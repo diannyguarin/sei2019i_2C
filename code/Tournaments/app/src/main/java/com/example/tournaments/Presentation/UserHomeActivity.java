@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import static com.example.tournaments.R.id.bChangeData;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class UserHomeActivity extends Prueba {
 
     private TournamentRepository tournamentRepository;
     private Tournament tournament;

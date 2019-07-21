@@ -42,17 +42,6 @@ public class CreateTournamentActivity extends AppCompatActivity {
         t_sport = (EditText) findViewById(R.id.t_sport);
         btn_create = (Button) findViewById(R.id.btn_create);
 
-
-        ImageView bcancelNew = (ImageView) findViewById(R.id.bcancelNew);
-        bcancelNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CreateTournamentActivity.this, AdminHomeActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

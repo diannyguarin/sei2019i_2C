@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuTournaments"
+        android:icon="@drawable/ic_cup"
+        android:title="Tournaments"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuTeams"
+        android:icon="@drawable/ic_team"
+        android:title="Teams" />
+    <item
+        android:id="@+id/menuUpdate"
+        android:icon="@drawable/ic_update"
+        android:title="Update" />
+    <item
+        android:id="@+id/menuLogout"
+        android:icon="@drawable/ic_logout"
+        android:title="Log Out" />
+</menu>

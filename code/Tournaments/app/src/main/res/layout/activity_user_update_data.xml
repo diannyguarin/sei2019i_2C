@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".Presentation.UpdateData">
+tools:context=".Presentation.UserUpdateDataActivity">
 
 <FrameLayout
     android:layout_width="match_parent"
@@ -22,17 +22,6 @@ tools:context=".Presentation.UpdateData">
         android:paddingRight="8dp"
         android:tint="#8AFFFFFF"
         app:srcCompat="@drawable/bluecircle2" />
-
-    <ImageView
-        android:id="@+id/bexit"
-        android:layout_width="53dp"
-        android:layout_height="45dp"
-        android:layout_gravity="right"
-        android:clickable="true"
-
-        android:paddingTop="8dp"
-        android:paddingRight="8dp"
-        app:srcCompat="@drawable/error" />
 
     <ImageView
         android:id="@+id/imageView8"

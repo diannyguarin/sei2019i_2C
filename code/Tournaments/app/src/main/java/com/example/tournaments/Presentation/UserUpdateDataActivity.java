@@ -15,7 +15,7 @@ import com.example.tournaments.businessLogic.Controllers.SignupController;
 import com.example.tournaments.businessLogic.Controllers.UpdateController;
 import com.example.tournaments.dataAcces.models.User;
 
-public class UserUpdateDataActivity extends AppCompatActivity {
+public class UserUpdateDataActivity extends Prueba {
 
     private EditText et_name;
     private EditText et_username;
@@ -62,7 +62,7 @@ public class UserUpdateDataActivity extends AppCompatActivity {
             });
 
 
-        ImageView bexit = (ImageView) findViewById(R.id.bexit);
+        /*ImageView bexit = (ImageView) findViewById(R.id.bexit);
         bexit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +71,6 @@ public class UserUpdateDataActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
         }
 }
