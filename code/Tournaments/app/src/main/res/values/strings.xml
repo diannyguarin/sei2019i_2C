@@ -1,4 +1,16 @@
 <resources>
     <string name="title_activity_test">test</string>
     <string name="Team">team</string>
+    <string-array name="TeamNumber">
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="tourType">
+        <item>Knockout</item>
+    </string-array>
+    <string-array name="sportName">
+        <item>Football</item>
+    </string-array>
 </resources>

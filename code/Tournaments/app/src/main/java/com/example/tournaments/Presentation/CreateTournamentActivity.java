@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tournaments.R;
@@ -16,7 +18,7 @@ import com.example.tournaments.dataAcces.repositories.SportRepository;
 import com.example.tournaments.dataAcces.repositories.TypeRepository;
 import com.example.tournaments.dataAcces.repositories.UserRepository;
 
-public class CreateTournamentActivity extends Prueba2 {
+public class CreateTournamentActivity extends Prueba2  {
     private EditText t_name;
     private EditText t_type;
     private EditText t_teamnumber;
@@ -28,22 +30,48 @@ public class CreateTournamentActivity extends Prueba2 {
     private TypeRepository typeRepository;
     private int sport;
     private int tournType;
-    String currentUsername;
+
 
     //private CreateTournamentController newtourController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_create_tournament);
 
-        Bundle extras = this.getIntent().getExtras();
-        currentUsername = extras.getString("currentUser");
+
+        //Tournament Type Spinner
+         final Spinner spinTourType =  findViewById(R.id.stourType);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(CreateTournamentActivity.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.tourType));
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinTourType.setAdapter(adapter1);
+
+        //Tournament Number of Teams Spinner
+         final Spinner spinNumberTeams = findViewById(R.id.spinnerTeams);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(CreateTournamentActivity.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.TeamNumber));
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinNumberTeams.setAdapter(adapter2);
+
+        //Tournament Number of Teams Spinner
+         final Spinner spinSport = findViewById(R.id.sSport);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(CreateTournamentActivity.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.sportName));
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinSport.setAdapter(adapter3);
+
+        //Bundle extras = this.getIntent().getExtras();
+
+        //currentUsername = extras.getString("currentUser");
+
+        //spinNumberTeams.setOnItemSelectedListener(this);
 
         t_name = (EditText) findViewById(R.id.t_name);
-        t_type = (EditText) findViewById(R.id.t_type);
-        t_teamnumber = (EditText) findViewById(R.id.t_teamnumber);
-        t_sport = (EditText) findViewById(R.id.t_sport);
+       // t_type = (EditText) findViewById(R.id.t_type);
+        //t_teamnumber = (EditText) findViewById(R.id.t_teamnumber);
+        //t_sport = (EditText) findViewById(R.id.t_sport);
         btn_create = (Button) findViewById(R.id.btn_create);
 
         btn_create.setOnClickListener(new View.OnClickListener() {
@@ -53,18 +81,18 @@ public class CreateTournamentActivity extends Prueba2 {
                 sportRepository = new SportRepository();
                 typeRepository = new TypeRepository();
                 String name = t_name.getText().toString();
-                String sportname = t_sport.getText().toString();
-                String tournamentType = t_type.getText().toString();
-                String numberOfTeams = t_teamnumber.getText().toString();
+                String sportname = spinSport.getSelectedItem().toString();
+                String tournamentType = spinTourType.getSelectedItem().toString();
+                String numberOfTeams = spinNumberTeams.getSelectedItem().toString();
 
                 if(name.equals("") || sportname.equals("") || tournamentType.equals("") || numberOfTeams.equals("")){
                     Toast.makeText(getApplicationContext(), "All fields must be filled.", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(tournamentType.equals("knockout")){
+                    if(tournamentType.equals("Knockout")){
                         sport = 1;
                         int numberOfTeamsInt = Integer.parseInt(numberOfTeams);
                         if(numberOfTeamsInt == 2 || numberOfTeamsInt == 4 || numberOfTeamsInt == 8 || numberOfTeamsInt == 16){
-                            if(sportname.equals("football")){
+                            if(sportname.equals("Football")){
                                 tournType = 1;
                                 try{
                                     boolean message = createTournamentController.createTournament(name, sport, tournType, numberOfTeamsInt);
@@ -100,4 +128,6 @@ public class CreateTournamentActivity extends Prueba2 {
         });
 
     }
+
+
 }
