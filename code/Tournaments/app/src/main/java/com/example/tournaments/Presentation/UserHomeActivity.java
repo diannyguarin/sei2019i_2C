@@ -1,19 +1,27 @@
 package com.example.tournaments.Presentation;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.support.v7.app.ActionBar;
 
 import com.example.tournaments.R;
+import com.example.tournaments.businessLogic.Controllers.SignupController;
+import com.example.tournaments.businessLogic.Controllers.UpdateController;
 import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 
 import java.util.ArrayList;
 
-public class BracketsActivity extends Prueba {
+import static com.example.tournaments.R.id.bChangeData;
+
+public class UserHomeActivity extends Prueba {
 
     private TournamentRepository tournamentRepository;
     private Tournament tournament;
@@ -23,7 +31,7 @@ public class BracketsActivity extends Prueba {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_bracket);
+        setContentView(R.layout.activity_user_home);
 
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
@@ -35,7 +43,7 @@ public class BracketsActivity extends Prueba {
             @Override
             public void onClick(View view) {
                     try{
-                        Intent intent = new Intent(BracketsActivity.this, UserUpdateDataActivity.class);
+                        Intent intent = new Intent(UserHomeActivity.this, UserUpdateDataActivity.class);
                         intent.putExtra("currentUser", currentUsername);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
@@ -50,7 +58,7 @@ public class BracketsActivity extends Prueba {
         bBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent1 = new Intent(BracketsActivity.this, LoginActivity.class);
+                    Intent intent1 = new Intent(UserHomeActivity.this, LoginActivity.class);
                     startActivity(intent1);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
                     finish();
@@ -60,7 +68,7 @@ public class BracketsActivity extends Prueba {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent3 = new Intent(BracketsActivity.this, UserHomeListActivity.class);
+                    Intent intent3 = new Intent(UserHomeActivity.this, UserHomeListActivity.class);
 
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
@@ -93,7 +101,7 @@ public class BracketsActivity extends Prueba {
 }
 
 /*try {
-        Intent intent = new Intent(BracketsActivity.this, UserUpdateDataActivity.class);
+        Intent intent = new Intent(UserHomeActivity.this, UserUpdateDataActivity.class);
         startActivity(intent);
         finish();
         } catch (Exception e) {

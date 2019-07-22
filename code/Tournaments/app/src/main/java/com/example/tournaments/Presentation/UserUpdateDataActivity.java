@@ -66,7 +66,7 @@ public class UserUpdateDataActivity extends Prueba {
         bexit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserUpdateDataActivity.this, BracketsActivity.class);
+                Intent intent = new Intent(UserUpdateDataActivity.this, UserHomeActivity.class);
                 intent.putExtra("currentUser", currentUsername);
                 startActivity(intent);
                 finish();

@@ -4,15 +4,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
+import com.example.tournaments.businessLogic.Controllers.DeleteTournamentController;
 import com.example.tournaments.businessLogic.Controllers.PopulateTournamentListController;
 import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
@@ -44,7 +48,7 @@ public class UserHomeListActivity extends Prueba {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent3 = new Intent(UserHomeListActivity.this, BracketsActivity.class);
+                    Intent intent3 = new Intent(UserHomeListActivity.this, UserHomeActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
@@ -86,7 +90,7 @@ public class UserHomeListActivity extends Prueba {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 try{
-                    Intent intent3 = new Intent(UserHomeListActivity.this, BracketsActivity.class);
+                    Intent intent3 = new Intent(UserHomeListActivity.this, UserHomeActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();

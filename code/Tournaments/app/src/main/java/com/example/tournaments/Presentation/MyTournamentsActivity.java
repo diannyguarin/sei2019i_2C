@@ -3,6 +3,7 @@ package com.example.tournaments.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
 import com.example.tournaments.dataAcces.models.Tournament;
+import com.example.tournaments.dataAcces.repositories.MyTournamentRepository;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class MyTournamentsActivity  extends Prueba {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent3 = new Intent(MyTournamentsActivity.this, BracketsActivity.class);
+                    Intent intent3 = new Intent(MyTournamentsActivity.this, UserHomeActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();

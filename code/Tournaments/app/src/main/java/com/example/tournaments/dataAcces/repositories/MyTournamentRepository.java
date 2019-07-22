@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.tournaments.Presentation.BracketsActivity;
+import com.example.tournaments.Presentation.UserHomeActivity;
+import com.example.tournaments.Presentation.UserHomeListActivity;
 import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
 import com.example.tournaments.dataAcces.models.Tournament;
@@ -38,7 +39,7 @@ public class MyTournamentRepository extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent3 = new Intent(MyTournamentRepository.this, BracketsActivity.class);
+                    Intent intent3 = new Intent(MyTournamentRepository.this, UserHomeActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
