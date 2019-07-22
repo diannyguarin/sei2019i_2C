@@ -36,7 +36,7 @@ public class TournamentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent3 = new Intent(TournamentActivity.this, UserHomeActivity.class);
+                    Intent intent3 = new Intent(TournamentActivity.this, BracketsActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();

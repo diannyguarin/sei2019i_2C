@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".Presentation.SignupActivity" />
         <activity android:name=".Presentation.Prueba" />
-        <activity android:name=".Presentation.UserHomeActivity"/>
+        <activity android:name=".Presentation.BracketsActivity"/>
 
         <activity android:name=".Presentation.AdminHomeActivity" />
         <activity android:name=".Presentation.UserUpdateDataActivity" />
@@ -23,7 +23,7 @@
         <activity android:name=".Presentation.TournamentActivity"/>
         <activity android:name=".Presentation.TeamsActivity"/>
 
-        <activity android:name=".Presentation.CreateTournamentActivity">
+        <activity android:name=".Presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
