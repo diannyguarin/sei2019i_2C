@@ -19,7 +19,10 @@ import com.example.tournaments.businessLogic.Adapters.TournamentsAdapter;
 import com.example.tournaments.businessLogic.Controllers.DeleteTournamentController;
 import com.example.tournaments.businessLogic.Controllers.PopulateTournamentListController;
 import com.example.tournaments.dataAcces.models.Tournament;
+import com.example.tournaments.dataAcces.models.User;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
+import com.example.tournaments.dataAcces.repositories.UserRepository;
+import com.example.tournaments.dataAcces.repositories.User_tournamentRepository;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,8 @@ public class UserHomeListActivity extends Prueba {
     ListView listView;
     private TournamentRepository tournamentRepository;
     private Tournament tournament;
+    private User_tournamentRepository user_tournamentRepository;
+    private UserRepository userRepository;
     private ArrayList<Tournament> tournaments = new ArrayList<>();
     String currentUsername;
     //cambio
@@ -123,7 +128,10 @@ public class UserHomeListActivity extends Prueba {
                             intent3.putExtra("currentUser", currentUsername);
                             //Object toRemove =  tournamentsAdapter2.getItem(position);
                             //tournamentsAdapter2.remove();
-                            tournamentRepository.deleteTournamentById((int) tournamentsAdapter2.getItem(position).getId_torneo());
+                            //tournamentRepository.deleteTournamentById((int) tournamentsAdapter2.getItem(position).getId_torneo());
+                            user_tournamentRepository = new User_tournamentRepository();
+                            userRepository = new UserRepository();
+                            user_tournamentRepository.createUser_tournament(userRepository.getUserByUsername(currentUsername).getName(),userRepository.getUserByUsername(currentUsername).getId(),(int) tournamentsAdapter2.getItem(position).getId_torneo());
                             tournamentsAdapter2.notifyDataSetChanged();
                             Toast.makeText(getApplicationContext(), "Torneo Borrado", Toast.LENGTH_SHORT).show();
                         }catch(Exception e){
