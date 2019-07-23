@@ -65,10 +65,7 @@ public class UserHomeListActivity extends Prueba {
             }});
         listView = (ListView) findViewById(R.id.list);
         populateTournamentList();
-        //selectItem_Clik();
-        deleteItem_Clik();
-
-
+        selectItem_Clik();
     }
 
     public ArrayList<Tournament> getTournaments(){
@@ -95,11 +92,11 @@ public class UserHomeListActivity extends Prueba {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 try{
-                    Intent intent3 = new Intent(UserHomeListActivity.this, UserHomeActivity.class);
+                    Intent intent3 = new Intent(UserHomeListActivity.this, BracketsActivity.class);
                     intent3.putExtra("currentUser", currentUsername);
                     startActivity(intent3);
                     Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }catch(Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                 }
@@ -107,53 +104,4 @@ public class UserHomeListActivity extends Prueba {
         });
 
     }
-
-    private void deleteItem_Clik() {
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int position, long l) {
-                Intent intent3 = new Intent();
-                intent3.putExtra("currentUser", currentUsername);
-                final TournamentsAdapter tournamentsAdapter2 = new TournamentsAdapter(UserHomeListActivity.this, getTournaments());
-                listView.setAdapter(tournamentsAdapter2);
-
-                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(UserHomeListActivity.this);
-                dialogo1.setTitle("Important");
-                dialogo1.setMessage("Â¿ You want to eliminate this tournament ?");
-                dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-                        try{
-                            Intent intent3 = new Intent();
-                            intent3.putExtra("currentUser", currentUsername);
-                            //Object toRemove =  tournamentsAdapter2.getItem(position);
-                            //tournamentsAdapter2.remove();
-                            //tournamentRepository.deleteTournamentById((int) tournamentsAdapter2.getItem(position).getId_torneo());
-                            user_tournamentRepository = new User_tournamentRepository();
-                            userRepository = new UserRepository();
-                            user_tournamentRepository.createUser_tournament(userRepository.getUserByUsername(currentUsername).getName(),userRepository.getUserByUsername(currentUsername).getId(),(int) tournamentsAdapter2.getItem(position).getId_torneo());
-                            tournamentsAdapter2.notifyDataSetChanged();
-                            Toast.makeText(getApplicationContext(), "Torneo Borrado", Toast.LENGTH_SHORT).show();
-                        }catch(Exception e){
-                            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                dialogo1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-                    }
-                });
-                dialogo1.show();
-                return false;
-            }
-        });
-    }
-
-
-
-
-
 }
-
-
-

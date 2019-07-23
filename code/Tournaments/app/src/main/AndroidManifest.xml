@@ -24,6 +24,8 @@
         <activity android:name=".Presentation.MyTournamentsActivity"/>
         <activity android:name=".Presentation.TournamentActivity"/>
         <activity android:name=".Presentation.TeamsActivity"/>
+        <activity android:name=".Presentation.TournamentCheckList"/>
+        <activity android:name=".Presentation.SelectTeamsActivity"/>
 
         <activity android:name=".Presentation.LoginActivity">
             <intent-filter>

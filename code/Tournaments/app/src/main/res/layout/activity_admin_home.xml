@@ -12,7 +12,6 @@
         android:background="#FFFFFF"
         android:clickable="true">
 
-        //IMAGENES
 
 
         <ImageView
