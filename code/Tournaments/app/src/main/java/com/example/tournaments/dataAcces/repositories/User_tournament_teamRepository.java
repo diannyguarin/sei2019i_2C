@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.tournaments.dataAcces.databases.AsyncCUD;
 import com.example.tournaments.dataAcces.databases.AsyncQuery;
 import com.example.tournaments.dataAcces.databases.SQLHelper;
+import com.example.tournaments.dataAcces.models.Team;
+import com.example.tournaments.dataAcces.models.TempTournamentTeamData;
 import com.example.tournaments.dataAcces.models.User_tournament_team;
 
 import java.util.ArrayList;
@@ -33,6 +35,27 @@ public class User_tournament_teamRepository {
                 splint = res.get(j).split(";");
                 if (splint != null && splint.length > 0) {
                     sol.add(new User_tournament_team(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
+    public ArrayList<TempTournamentTeamData> getAllUserTournamentTeamsImproved(int userTournamentId) { //read
+        ArrayList<String> res;
+        ArrayList<TempTournamentTeamData> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"select Users_tournaments_teams.id, Teams.name from Users_tournaments_teams, Teams, Users_tournaments where Users_tournaments.id = "+userTournamentId+" and Users_tournaments.id = Users_tournaments_teams.user_tournament and Teams.id = Users_tournaments_teams.team"};
+            res = new AsyncQuery("Users_tournaments_teams_improved").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new TempTournamentTeamData(Integer.valueOf(splint[0]), splint[1]));
                 }
             }
         } catch (Exception ex) {
@@ -70,6 +93,38 @@ public class User_tournament_teamRepository {
             String[] datos = new String[]{"insert into " + SQLHelper.usr + ".Users_tournaments_teams(team,user_tournament) values (" + team + "," + user_tournament + ")"};
             succes = new AsyncCUD().execute(datos).get();
             this.user_tournament_team = new User_tournament_team(team, user_tournament);
+        } catch (Exception ex) {
+            Log.d("failure in insert", ex.getMessage());
+        }
+        return succes;
+    }
+
+    public boolean createUserTournamentTeamImproved(int userTournamentId, ArrayList<Team> tournamentTeams) { //create
+        boolean succes = false;
+        try {
+            Class.forName(SQLHelper.driver).newInstance();
+
+            String[] datos = new String[]{};
+
+            switch (tournamentTeams.size()) {
+                case 2:
+                    datos = new String[]{"insert into Users_tournaments_teams(team, user_tournament) VALUES("+tournamentTeams.get(0).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(1).getId()+", "+userTournamentId+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+                case 4:
+                    datos = new String[]{"insert into Users_tournaments_teams(team, user_tournament) VALUES("+tournamentTeams.get(0).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(1).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(2).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(3).getId()+", "+userTournamentId+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+                case 8:
+                    datos = new String[]{"insert into Users_tournaments_teams(team, user_tournament) VALUES("+tournamentTeams.get(0).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(1).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(2).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(3).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(4).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(5).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(6).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(7).getId()+", "+userTournamentId+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+                case 16:
+                    datos = new String[]{"insert into Users_tournaments_teams(team, user_tournament) VALUES("+tournamentTeams.get(0).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(1).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(2).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(3).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(4).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(5).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(6).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(7).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(8).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(9).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(10).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(11).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(12).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(13).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(14).getId()+", "+userTournamentId+"), ("+tournamentTeams.get(15).getId()+", "+userTournamentId+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+            }
+
         } catch (Exception ex) {
             Log.d("failure in insert", ex.getMessage());
         }

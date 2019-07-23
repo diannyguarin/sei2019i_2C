@@ -1,8 +1,6 @@
 package com.example.tournaments.Presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,17 +32,6 @@ private PopulateTeamListController popTeam;
         teamNames= new ArrayList<String>();
         teamsAux= new ArrayList<String>();
         teams = getTeams();
-
-        FloatingActionButton next= findViewById(R.id.fab);
-        next = (FloatingActionButton) findViewById(R.id.fabNext);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BracketsActivity.this, SelectTeamsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         Iterator<Team> iter = teams.iterator();
         while (iter.hasNext()) {
@@ -83,8 +70,11 @@ private PopulateTeamListController popTeam;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
+
         String item = parent.getItemAtPosition(position).toString();
+
         ArrayList<String> newTeams = new ArrayList<String>();
+
         Iterator<String> iter = teamsAux.iterator();
 
         while (iter.hasNext()) {
@@ -102,43 +92,7 @@ private PopulateTeamListController popTeam;
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin2.setAdapter(adapter2);
 
-        Spinner spin3 =  findViewById(R.id.spinner3);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin3.setAdapter(adapter2);
-
-        Spinner spin4 =  findViewById(R.id.spinner4);
-        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin4.setAdapter(adapter2);
-
-        Spinner spin5 =  findViewById(R.id.spinner5);
-        ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin5.setAdapter(adapter2);
-
-        Spinner spin6 =  findViewById(R.id.spinner6);
-        ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin6.setAdapter(adapter2);
-
-        Spinner spin7 =  findViewById(R.id.spinner7);
-        ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin7.setAdapter(adapter2);
-
-        Spinner spin8 =  findViewById(R.id.spinner8);
-        ArrayAdapter<String> adapter8 = new ArrayAdapter<String>(BracketsActivity.this,
-                android.R.layout.simple_list_item_1,newTeams);
-        adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin8.setAdapter(adapter2);
     }
-
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }

@@ -69,14 +69,24 @@ public class AsyncQuery extends AsyncTask<String,Void, ArrayList<String>> {
                         results.add(resultSet.getInt(1)+";"+resultSet.getString(2)+";"+resultSet.getInt(3));
                     }
                     break;
+                case "Users_tournaments_teams_improved":
+                    while (resultSet.next()) {
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getString(2));
+                    }
+                    break;
                 case "Users_tournaments_teams":
                     while (resultSet.next()) {
                         results.add(resultSet.getInt(1) + ";" + resultSet.getInt(2) + ";" + resultSet.getInt(3));
                     }
                     break;
+                case "Users_tournaments_improved":
+                    while (resultSet.next()) {
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getString(2) + ";" + resultSet.getInt(3));
+                    }
+                    break;
                 case "Users_tournaments":
                     while (resultSet.next()) {
-                        results.add(resultSet.getInt(1) + ";" + resultSet.getString(2) + ";" + resultSet.getInt(3) + ";" + resultSet.getInt(4));
+                        results.add(resultSet.getInt(1) + ";" + resultSet.getInt(2) + ";" + resultSet.getInt(3));
                     }
                     break;
                 case "Matchups":

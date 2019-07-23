@@ -11,11 +11,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tournaments.R;
+import com.example.tournaments.businessLogic.Controllers.CreateMatchupsController;
+import com.example.tournaments.businessLogic.Controllers.CreateUserTournamentController;
 import com.example.tournaments.businessLogic.Controllers.LoginController;
+import com.example.tournaments.businessLogic.Controllers.PopulateMyTournamentsListController;
+import com.example.tournaments.businessLogic.Controllers.PopulateUserTournamentTeamListController;
 import com.example.tournaments.dataAcces.models.Administrator;
+import com.example.tournaments.dataAcces.models.Team;
+import com.example.tournaments.dataAcces.models.TempTournamentTeamData;
+import com.example.tournaments.dataAcces.models.TempUserTournamentData;
 import com.example.tournaments.dataAcces.models.Tournament;
 import com.example.tournaments.dataAcces.models.User;
+import com.example.tournaments.dataAcces.models.User_tournament;
+import com.example.tournaments.dataAcces.repositories.TeamRepository;
 import com.example.tournaments.dataAcces.repositories.TournamentRepository;
+import com.example.tournaments.dataAcces.repositories.User_tournament_teamRepository;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -107,8 +117,58 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        //testingMyTournamentsList();
+        //testingCreateUserTournament();
+        //testingUserTournamentTeamList();
+        testingCreateMatchups();
     }
+
+    private void testingCreateMatchups() {
+        User_tournament_teamRepository userTournamentTeamRepository = new User_tournament_teamRepository();
+        ArrayList<TempTournamentTeamData> tournamentTeamDataArrayList = userTournamentTeamRepository.getAllUserTournamentTeamsImproved(29);
+        CreateMatchupsController createMatchupsController = new CreateMatchupsController();
+        createMatchupsController.createMatchups(tournamentTeamDataArrayList);
     }
+
+    private void testingUserTournamentTeamList() {
+        PopulateUserTournamentTeamListController populateUserTournamentTeamListController = new PopulateUserTournamentTeamListController();
+        try{
+            ArrayList<TempTournamentTeamData> tempTournamentTeamDataArrayList = populateUserTournamentTeamListController.getAllUserTournamentTeams(29);
+            if (tempTournamentTeamDataArrayList == null){
+                Toast.makeText(getApplicationContext(), "NULL", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(), ""+tempTournamentTeamDataArrayList+" "+tempTournamentTeamDataArrayList.size(), Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Paila prrito, no se pudo hacer esa mrda", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void testingCreateUserTournament() {
+        User_tournament userTournament;
+        TeamRepository teamRepository = new TeamRepository();
+        ArrayList<Team> teamArrayList = teamRepository.getAllTeamsByUserId(3);
+        CreateUserTournamentController createUserTournamentController = new CreateUserTournamentController();
+        userTournament = createUserTournamentController.createUserTournament(3, 26, teamArrayList);
+        Toast.makeText(getApplicationContext(), ""+userTournament, Toast.LENGTH_SHORT).show();
+    }
+
+    public void testingMyTournamentsList(){
+        PopulateMyTournamentsListController populateMyTournamentsListController = new PopulateMyTournamentsListController();
+        try{
+            ArrayList<TempUserTournamentData> tempUserTournamentDataArrayList = populateMyTournamentsListController.getAllUserTournaments(3);
+            if (tempUserTournamentDataArrayList == null){
+                Toast.makeText(getApplicationContext(), "NULL", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(), ""+tempUserTournamentDataArrayList, Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Paila prrito, no se pudo hacer esa mrda", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+}
 
 
 

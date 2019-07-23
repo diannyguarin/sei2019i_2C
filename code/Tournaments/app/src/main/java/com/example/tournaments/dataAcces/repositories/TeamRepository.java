@@ -41,6 +41,27 @@ public class TeamRepository {
         return sol;
     }
 
+    public ArrayList<Team> getAllTeamsByUserId(int currentUserId) { //read
+        ArrayList<String> res;
+        ArrayList<Team> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Teams WHERE user= "+currentUserId+""};
+            res = new AsyncQuery("Teams").execute(datos).get();
+
+            String[] splint;
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint.length > 0) {
+                    sol.add(new Team(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
     public Team getTeamByName(String name) { //read
         ArrayList<String> res;
         try {
@@ -67,6 +88,28 @@ public class TeamRepository {
         ArrayList<String> res;
         try {
             String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Teams WHERE id=" + id};
+            res = new AsyncQuery("Teams").execute(datos).get();
+
+            String[] splint = new String[0];
+            if (res.size() > 0)
+                splint = res.get(0).split(";");
+            String sup = "";
+            for (String s : splint) {
+                s.trim();
+            }
+            if (splint.length > 0) {
+                this.team = new Team(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]));
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return this.team;
+    }
+
+    public Team getTeamByUserId(int currentUserId) { //read
+        ArrayList<String> res;
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Teams WHERE user=" + currentUserId};
             res = new AsyncQuery("Teams").execute(datos).get();
 
             String[] splint = new String[0];

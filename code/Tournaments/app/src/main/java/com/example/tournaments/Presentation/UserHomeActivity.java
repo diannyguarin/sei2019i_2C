@@ -47,10 +47,11 @@ public class UserHomeActivity extends Prueba {
                         intent.putExtra("currentUser", currentUsername);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-
+                        finish();
                     }catch(Exception e){
                         Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
+
             }});
 
         ImageView bBack = (ImageView) findViewById(R.id.bBack);
@@ -79,6 +80,13 @@ public class UserHomeActivity extends Prueba {
 
             }});
         //Toast.makeText(getApplicationContext(), ""+getTournaments(), Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
     }
 
     /*public ArrayList<Tournament> getTournaments(){

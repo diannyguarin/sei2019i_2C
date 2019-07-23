@@ -73,7 +73,7 @@ public class TournamentRepository {
 
             String[] splint = new String[0];
             if (res.size() > 0)
-                splint = res.get(0).split(" ");
+                splint = res.get(0).split(";");
             String sup = "";
             for (int i = 0; i < splint.length; i++) {
                 splint[i].trim();

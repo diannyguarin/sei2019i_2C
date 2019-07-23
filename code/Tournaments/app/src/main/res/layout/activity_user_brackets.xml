@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
+    android:padding="5dp"
     tools:context=".Presentation.BracketsActivity">
-
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -29,14 +30,30 @@
             android:tint="#6BFFFFFF"
             app:srcCompat="@drawable/bluecircle3" />
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="145dp"
+            android:layout_height="205dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/playoff" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="201dp"
+            android:layout_height="172dp"
+            android:layout_gravity="bottom|center"
+            app:srcCompat="@drawable/estrategia" />
+
         <LinearLayout
             android:layout_width="245dp"
-            android:layout_height="690dp"
+            android:layout_height="552dp"
             android:layout_gravity="center"
             android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -49,13 +66,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="21dp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="#1" />
+                android:layout_height="13dp" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -71,90 +82,15 @@
                 android:layout_width="242dp"
                 android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <TextView
-                android:id="@+id/textVie"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/bTournaments"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="#2" />
-
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <Spinner
-                android:id="@+id/spinner4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="#3" />
-
-            <Spinner
-                android:id="@+id/spinner5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <Spinner
-                android:id="@+id/spinner6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="#4" />
-
-            <Spinner
-                android:id="@+id/spinner7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
-            <Spinner
-                android:id="@+id/spinner8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
+                android:layout_gravity="center_horizontal"
+                android:text="Tournaments" />
 
         </LinearLayout>
 
-        </ScrollView>
-        <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabNext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:clickable="true"
-        app:srcCompat="@color/blueCorp" />
-    </FrameLayout>
-</RelativeLayout>
 
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

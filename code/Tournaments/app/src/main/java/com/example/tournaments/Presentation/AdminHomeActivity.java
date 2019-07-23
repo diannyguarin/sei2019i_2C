@@ -35,6 +35,8 @@ public class AdminHomeActivity extends Prueba2 {
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
 
+        //tv_role = (TextView) findViewById(R.id.tv_role);
+
         newT = (FloatingActionButton) findViewById(R.id.newTour);
         newT.setOnClickListener(new View.OnClickListener() {
             @Override
