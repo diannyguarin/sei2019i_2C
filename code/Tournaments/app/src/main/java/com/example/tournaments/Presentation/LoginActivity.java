@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                         userstore = loginController.loginUser(username, pass);
                         Intent intent = new Intent(LoginActivity.this, UserHomeListActivity.class);
                         intent.putExtra("currentUser", userstore.getUsername());
+                        intent.putExtra("currentUserId", userstore.getId());
                         startActivity(intent);
                         finish();
 
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
         //testingMyTournamentsList();
         //testingCreateUserTournament();
         //testingUserTournamentTeamList();
-        testingCreateMatchups();
+        //testingCreateMatchups();
     }
 
     private void testingCreateMatchups() {

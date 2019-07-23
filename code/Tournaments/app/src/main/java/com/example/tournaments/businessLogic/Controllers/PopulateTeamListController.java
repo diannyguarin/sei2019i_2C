@@ -14,10 +14,10 @@ public class PopulateTeamListController {
 
     private ArrayList<Team> teams = new ArrayList<>();
 
-    public ArrayList<Team> getTeams(){
+    public ArrayList<Team> getTeams(int currentUserId){
         teamRepository = new TeamRepository();
         try{
-            teams = teamRepository.getAllTeams();
+            teams = teamRepository.getAllTeamsByUserId(currentUserId);
         }catch(Exception e){
             return null;
         }

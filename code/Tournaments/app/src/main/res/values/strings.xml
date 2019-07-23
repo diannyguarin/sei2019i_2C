@@ -13,4 +13,9 @@
     <string-array name="sportName">
         <item>Football</item>
     </string-array>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_create_tournament_select_teams">CreateTournamentSelectTeams
+    </string>
 </resources>

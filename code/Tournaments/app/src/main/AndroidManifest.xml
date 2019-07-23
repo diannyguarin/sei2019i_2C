@@ -11,20 +11,25 @@
         android:roundIcon="@mipmap/trophymain"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Presentation.UserHomeListActivity">
-        </activity>
+        <activity android:name=".Presentation.CreateTournamentQuartersMatchups"></activity>
+        <activity
+            android:name=".Presentation.CreateTournamentSelectTeams"
+            android:label="@string/title_activity_create_tournament_select_teams"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Presentation.CreateTournamentTeamsQuarters" />
+        <activity android:name=".Presentation.UserHomeListActivity" />
         <activity android:name=".Presentation.SignupActivity" />
         <activity android:name=".Presentation.Prueba" />
-        <activity android:name=".Presentation.Prueba2"/>
-        <activity android:name=".Presentation.BracketsActivity"/>
-        <activity android:name=".Presentation.UserHomeActivity"/>
+        <activity android:name=".Presentation.Prueba2" />
+        <activity android:name=".Presentation.BracketsActivity" />
+        <activity android:name=".Presentation.UserHomeActivity" />
         <activity android:name=".Presentation.CreateTournamentActivity" />
         <activity android:name=".Presentation.AdminHomeActivity" />
         <activity android:name=".Presentation.UserUpdateDataActivity" />
-        <activity android:name=".Presentation.MyTournamentsActivity"/>
-        <activity android:name=".Presentation.TournamentActivity"/>
-        <activity android:name=".Presentation.TeamsActivity"/>
-
+        <activity android:name=".Presentation.MyTournamentsActivity" />
+        <activity android:name=".Presentation.TournamentActivity" />
+        <activity android:name=".Presentation.CreateTournamentSelectTeamsMatchups" />
+        <activity android:name=".Presentation.TeamsActivity" />
         <activity android:name=".Presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

@@ -1,6 +1,9 @@
 package com.example.tournaments.dataAcces.models;
 
-public class Team {
+import java.io.Serializable;
+
+public class Team implements Serializable {
+
     private int id;
     private String name;
     private int user;

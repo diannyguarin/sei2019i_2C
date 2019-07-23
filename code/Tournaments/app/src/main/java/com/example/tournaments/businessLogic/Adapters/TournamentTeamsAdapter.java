@@ -9,16 +9,17 @@ import android.widget.TextView;
 
 import com.example.tournaments.R;
 import com.example.tournaments.dataAcces.models.Team;
-import com.example.tournaments.dataAcces.models.Tournament;
+import com.example.tournaments.dataAcces.models.TempTournamentTeamData;
+import com.example.tournaments.dataAcces.models.TempUserTournamentData;
 
 import java.util.ArrayList;
 
-public class TeamsAdapter extends BaseAdapter {
+public class TournamentTeamsAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Team> teams = new ArrayList<>();
+    ArrayList<TempTournamentTeamData> teams = new ArrayList<>();
 
-    public TeamsAdapter(Context context, ArrayList<Team> teams){
+    public TournamentTeamsAdapter(Context context, ArrayList<TempTournamentTeamData> teams){
         this.context = context;
         this.teams = teams;
     }
@@ -50,7 +51,7 @@ public class TeamsAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.team_list, parent, false);
         }
 
-        Team tempTeam = (Team) getItem(position);
+        TempTournamentTeamData tempTeam = (TempTournamentTeamData) getItem(position);
 
         TextView tvName = (TextView)convertView.findViewById(R.id.tvName);
 

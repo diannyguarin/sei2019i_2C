@@ -18,6 +18,7 @@ import com.example.tournaments.R;
 import com.example.tournaments.businessLogic.Adapters.TeamsAdapter;
 import com.example.tournaments.businessLogic.Controllers.CreateTournamentController;
 import com.example.tournaments.businessLogic.Controllers.CreateTeamController;
+import com.example.tournaments.businessLogic.Controllers.PopulateTeamListController;
 import com.example.tournaments.businessLogic.Controllers.UpdateController;
 import com.example.tournaments.dataAcces.models.Team;
 import com.example.tournaments.dataAcces.repositories.TeamRepository;
@@ -41,7 +42,8 @@ public class TeamsActivity extends Prueba{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_teams);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Teams");
+        actionBar.setTitle("Tournament - Teams");
+
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
 
@@ -62,30 +64,31 @@ public class TeamsActivity extends Prueba{
 
         listView = (ListView) findViewById(R.id.list);
         populateTeamList();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                team = teams.get(team.getId());
-                Intent intent4 = new Intent(view.getContext(), TournamentActivity.class);
-                intent4.putExtra("currentUser", currentUsername);
-                startActivity(intent4);
-                finish();
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                team = teams.get(team.getId());
+//                Intent intent4 = new Intent(view.getContext(), TournamentActivity.class);
+//                intent4.putExtra("currentUser", currentUsername);
+//                startActivity(intent4);
+//                finish();
+//            }
+//        });
     }
 
-    public ArrayList<Team> getTeams(){
-        teamRepository = new TeamRepository();
-        try{
-            teams = teamRepository.getAllTeams();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Paila prro", Toast.LENGTH_SHORT).show();
-        }
-        return teams;
-    }
+//    public ArrayList<Team> getTeams(){
+//        teamRepository = new TeamRepository();
+//        try{
+//            teams = teamRepository.getAllTeams();
+//        }catch(Exception e){
+//            Toast.makeText(getApplicationContext(), "Paila prro", Toast.LENGTH_SHORT).show();
+//        }
+//        return teams;
+//    }
 
     public void populateTeamList(){
-        TeamsAdapter teamsAdapter = new TeamsAdapter(TeamsActivity.this, getTeams());
+        PopulateTeamListController populateTeamListController = new PopulateTeamListController();
+        TeamsAdapter teamsAdapter = new TeamsAdapter(TeamsActivity.this, populateTeamListController.getTeams(3));
         listView.setAdapter(teamsAdapter);
     }
 

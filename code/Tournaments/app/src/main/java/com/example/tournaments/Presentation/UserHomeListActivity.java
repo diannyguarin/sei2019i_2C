@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tournaments.R;
@@ -24,6 +25,7 @@ import com.example.tournaments.dataAcces.repositories.TournamentRepository;
 import com.example.tournaments.dataAcces.repositories.UserRepository;
 import com.example.tournaments.dataAcces.repositories.User_tournamentRepository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class UserHomeListActivity extends Prueba {
@@ -47,6 +49,7 @@ public class UserHomeListActivity extends Prueba {
         actionBar.setTitle("Tournament list");
         Bundle extras = this.getIntent().getExtras();
         currentUsername = extras.getString("currentUser");
+        final int currentUserId = extras.getInt("currentUserId");
 
         Button bBackHome = (Button) findViewById(R.id.bBackHome);
         bBackHome.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +70,21 @@ public class UserHomeListActivity extends Prueba {
         populateTournamentList();
         //selectItem_Clik();
         deleteItem_Clik();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Tournament tempTournament = (Tournament) adapterView.getItemAtPosition(i);
+                int teams = tempTournament.getNumberOfTeams();
+                if(teams == 8){
+                    Intent intent = new Intent(UserHomeListActivity.this, CreateTournamentTeamsQuarters.class);
+                    intent.putExtra("tournamentId", tempTournament.getId_torneo());
+                    intent.putExtra("previousActivity", "userHomeList");
+                    intent.putExtra("currentUserId", currentUserId);
+                    startActivity(intent);
+                }
+            }
+        });
 
 
     }
