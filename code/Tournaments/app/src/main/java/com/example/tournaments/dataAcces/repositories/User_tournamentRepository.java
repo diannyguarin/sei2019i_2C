@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.tournaments.dataAcces.databases.AsyncCUD;
 import com.example.tournaments.dataAcces.databases.AsyncQuery;
 import com.example.tournaments.dataAcces.databases.SQLHelper;
+import com.example.tournaments.dataAcces.models.TempUserTournamentData;
 import com.example.tournaments.dataAcces.models.User_tournament;
 
 import java.util.ArrayList;
@@ -32,7 +33,49 @@ public class User_tournamentRepository {
             for (int j = 0; j < res.size(); j++) {
                 splint = res.get(j).split(";");
                 if (splint != null && splint.length > 0) {
-                    sol.add(new User_tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3])));
+                    sol.add(new User_tournament(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
+    public ArrayList<User_tournament> getAllUserTournamentsByUserId(int userId) { //read
+        ArrayList<String> res;
+        ArrayList<User_tournament> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT * from " + SQLHelper.usr + ".Users_tournaments WHERE user="+userId+""};
+            res = new AsyncQuery("Users_tournaments").execute(datos).get();
+
+            String[] splint = new String[res.size() * 6];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new User_tournament(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2])));
+                }
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return sol;
+    }
+
+    public ArrayList<TempUserTournamentData> getAllUserTournamentsByUserIdImproved(int userId) { //read
+        ArrayList<String> res;
+        ArrayList<TempUserTournamentData> sol = new ArrayList<>();
+        try {
+            String[] datos = new String[]{"SELECT Users_tournaments.id, Tournaments.name, Tournaments.numberOfTeams from Users_tournaments, Tournaments WHERE Users_tournaments.user = "+userId+" AND Tournaments.id = Users_tournaments.tournament"};
+            res = new AsyncQuery("Users_tournaments_improved").execute(datos).get();
+
+            String[] splint = new String[3];
+
+            for (int j = 0; j < res.size(); j++) {
+                splint = res.get(j).split(";");
+                if (splint != null && splint.length > 0) {
+                    sol.add(new TempUserTournamentData(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2])));
                 }
             }
         } catch (Exception ex) {
@@ -55,7 +98,7 @@ public class User_tournamentRepository {
                 splint[i].trim();
             }
             if (splint != null && splint.length > 0) {
-                this.user_tournament = new User_tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3]));
+                this.user_tournament = new User_tournament(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2]));
             }
         } catch (Exception ex) {
             Log.d("failure in query", ex.getMessage());
@@ -77,7 +120,7 @@ public class User_tournamentRepository {
                 splint[i].trim();
             }
             if (splint != null && splint.length > 0) {
-                this.user_tournament = new User_tournament(Integer.valueOf(splint[0]), splint[1], Integer.valueOf(splint[2]), Integer.valueOf(splint[3]));
+                this.user_tournament = new User_tournament(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2]));
             }
         } catch (Exception ex) {
             Log.d("failure in query", ex.getMessage());
@@ -85,13 +128,33 @@ public class User_tournamentRepository {
         return this.user_tournament;
     }
 
-    public boolean createUser_tournament(String name, int user, int tournament) { //create
+    public User_tournament getUserTournamentByIdImproved(int currentUserId) { //read
+        ArrayList<String> res;
+        try {
+            String[] datos = new String[]{"SELECT Users_tournaments.id, Users_tournaments.user, Users_tournaments.tournament from Users_tournaments, Tournaments WHERE Users_tournaments.user = "+currentUserId+" AND Tournaments.id = Users_tournaments.tournament ORDER BY Users_tournaments.id DESC LIMIT 1"};
+            res = new AsyncQuery("Users_tournaments").execute(datos).get();
+
+            String[] splint = new String[0];
+            if (res.size() > 0)
+                splint = res.get(0).split(";");
+            for (int i = 0; i < splint.length; i++) {
+                splint[i].trim();
+            }
+            if (splint != null && splint.length > 0) {
+                this.user_tournament = new User_tournament(Integer.valueOf(splint[0]), Integer.valueOf(splint[1]), Integer.valueOf(splint[2]));
+            }
+        } catch (Exception ex) {
+            Log.d("failure in query", ex.getMessage());
+        }
+        return this.user_tournament;
+    }
+
+    public boolean createUser_tournament(int user, int tournament) { //create
         boolean succes = false;
         try {
             Class.forName(SQLHelper.driver).newInstance();
-            String[] datos = new String[]{"insert into " + SQLHelper.usr + ".Users_tournaments(name,user,tournament) values ('" + name + "'," + user + "," + tournament + ")"};
+            String[] datos = new String[]{"insert into " + SQLHelper.usr + ".Users_tournaments(user,tournament) values (" + user + "," + tournament + ")"};
             succes = new AsyncCUD().execute(datos).get();
-            this.user_tournament = new User_tournament(name, user, tournament);
         } catch (Exception ex) {
             Log.d("failure in insert", ex.getMessage());
         }
@@ -119,7 +182,6 @@ public class User_tournamentRepository {
             if (name != "") {
                 datos = new String[]{"update " + SQLHelper.usr + ".Users_tournaments set name='" + name + "' WHERE name='" + currentName + "'"};
                 success = new AsyncCUD().execute(datos).get();
-                this.user_tournament.setName(name);
             }
         } catch (Exception ex) {
             Log.d("failure in update", ex.getMessage());

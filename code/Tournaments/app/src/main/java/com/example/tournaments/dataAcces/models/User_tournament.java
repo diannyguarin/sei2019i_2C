@@ -2,19 +2,16 @@ package com.example.tournaments.dataAcces.models;
 
 public class User_tournament {
     private int id;
-    private String name;
     private int user;
     private int tournament;
 
-    public User_tournament(int id, String name, int user, int tournament) {
+    public User_tournament(int id, int user, int tournament) {
         this.id = id;
-        this.name = name;
         this.user = user;
         this.tournament = tournament;
     }
 
-    public User_tournament(String name, int user, int tournament) {
-        this.name = name;
+    public User_tournament(int user, int tournament) {
         this.user = user;
         this.tournament = tournament;
     }
@@ -25,14 +22,6 @@ public class User_tournament {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getUser() {
@@ -55,7 +44,6 @@ public class User_tournament {
     public String toString() {
         return "User_tournament{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", user=" + user +
                 ", tournament=" + tournament +
                 '}';

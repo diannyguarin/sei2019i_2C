@@ -17,6 +17,7 @@
         <activity android:name=".Presentation.Prueba" />
         <activity android:name=".Presentation.Prueba2"/>
         <activity android:name=".Presentation.BracketsActivity"/>
+        <activity android:name=".Presentation.Teams_Check_Activity"/>
         <activity android:name=".Presentation.UserHomeActivity"/>
         <activity android:name=".Presentation.CreateTournamentActivity" />
         <activity android:name=".Presentation.AdminHomeActivity" />
@@ -24,8 +25,6 @@
         <activity android:name=".Presentation.MyTournamentsActivity"/>
         <activity android:name=".Presentation.TournamentActivity"/>
         <activity android:name=".Presentation.TeamsActivity"/>
-        <activity android:name=".Presentation.TournamentCheckList"/>
-        <activity android:name=".Presentation.SelectTeamsActivity"/>
 
         <activity android:name=".Presentation.LoginActivity">
             <intent-filter>

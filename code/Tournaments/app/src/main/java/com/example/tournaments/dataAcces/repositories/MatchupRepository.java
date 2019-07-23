@@ -77,6 +77,36 @@ public class MatchupRepository {
         return succes;
     }
 
+    public boolean createMatchupsImproved(ArrayList<Matchup> matchupArrayList) { //create
+        boolean succes = false;
+        try {
+            Class.forName(SQLHelper.driver).newInstance();
+            String[] datos = new String[]{};
+
+            switch (matchupArrayList.size()) {
+                case 2:
+                    datos = new String[]{"insert into Matchups(localTeam, visitorTeam, phase, bracket) VALUES("+matchupArrayList.get(0).getLocalTeam()+", "+matchupArrayList.get(0).getVisitorTeam()+", '"+matchupArrayList.get(0).getPhase()+"', "+matchupArrayList.get(0).getBracket()+"), ("+matchupArrayList.get(1).getLocalTeam()+", "+matchupArrayList.get(1).getVisitorTeam()+", '"+matchupArrayList.get(1).getPhase()+"', "+matchupArrayList.get(1).getBracket()+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+                case 4:
+                    datos = new String[]{"insert into Matchups(localTeam, visitorTeam, phase, bracket) VALUES("+matchupArrayList.get(0).getLocalTeam()+", "+matchupArrayList.get(0).getVisitorTeam()+", '"+matchupArrayList.get(0).getPhase()+"', "+matchupArrayList.get(0).getBracket()+"), ("+matchupArrayList.get(1).getLocalTeam()+", "+matchupArrayList.get(1).getVisitorTeam()+", '"+matchupArrayList.get(1).getPhase()+"', "+matchupArrayList.get(1).getBracket()+"), ("+matchupArrayList.get(2).getLocalTeam()+", "+matchupArrayList.get(2).getVisitorTeam()+", '"+matchupArrayList.get(2).getPhase()+"', "+matchupArrayList.get(2).getBracket()+"), ("+matchupArrayList.get(3).getLocalTeam()+", "+matchupArrayList.get(3).getVisitorTeam()+", '"+matchupArrayList.get(3).getPhase()+"', "+matchupArrayList.get(3).getBracket()+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+                case 8:
+                    datos = new String[]{"insert into Matchups(localTeam, visitorTeam, phase, bracket) VALUES("+matchupArrayList.get(0).getLocalTeam()+", "+matchupArrayList.get(0).getVisitorTeam()+", '"+matchupArrayList.get(0).getPhase()+"', "+matchupArrayList.get(0).getBracket()+"), ("+matchupArrayList.get(1).getLocalTeam()+", "+matchupArrayList.get(1).getVisitorTeam()+", '"+matchupArrayList.get(1).getPhase()+"', "+matchupArrayList.get(1).getBracket()+"), ("+matchupArrayList.get(2).getLocalTeam()+", "+matchupArrayList.get(2).getVisitorTeam()+", '"+matchupArrayList.get(2).getPhase()+"', "+matchupArrayList.get(2).getBracket()+"), ("+matchupArrayList.get(3).getLocalTeam()+", "+matchupArrayList.get(3).getVisitorTeam()+", '"+matchupArrayList.get(3).getPhase()+"', "+matchupArrayList.get(3).getBracket()+"), ("+matchupArrayList.get(4).getLocalTeam()+", "+matchupArrayList.get(4).getVisitorTeam()+", '"+matchupArrayList.get(4).getPhase()+"', "+matchupArrayList.get(4).getBracket()+"), ("+matchupArrayList.get(5).getLocalTeam()+", "+matchupArrayList.get(5).getVisitorTeam()+", '"+matchupArrayList.get(5).getPhase()+"', "+matchupArrayList.get(5).getBracket()+"), ("+matchupArrayList.get(6).getLocalTeam()+", "+matchupArrayList.get(6).getVisitorTeam()+", '"+matchupArrayList.get(6).getPhase()+"', "+matchupArrayList.get(6).getBracket()+"), ("+matchupArrayList.get(7).getLocalTeam()+", "+matchupArrayList.get(7).getVisitorTeam()+", '"+matchupArrayList.get(7).getPhase()+"', "+matchupArrayList.get(7).getBracket()+")"};
+                    succes = new AsyncCUD().execute(datos).get();
+                    break;
+//                case 16:
+//                    datos = new String[]{"insert into Matchups(localTeam, visitorTeam, phase, bracket) VALUES("+matchupArrayList.get(0).getLocalTeam()+", "+matchupArrayList.get(0).getVisitorTeam()+", "+matchupArrayList.get(0).getPhase()+", "+matchupArrayList.get(0).getBracket()+"), ("+matchupArrayList.get(1).getLocalTeam()+", "+matchupArrayList.get(1).getVisitorTeam()+", "+matchupArrayList.get(1).getPhase()+", "+matchupArrayList.get(1).getBracket()+"), ("+matchupArrayList.get(2).getLocalTeam()+", "+matchupArrayList.get(2).getVisitorTeam()+", "+matchupArrayList.get(2).getPhase()+", "+matchupArrayList.get(2).getBracket()+"), ("+matchupArrayList.get(3).getLocalTeam()+", "+matchupArrayList.get(3).getVisitorTeam()+", "+matchupArrayList.get(3).getPhase()+", "+matchupArrayList.get(3).getBracket()+"), ("+matchupArrayList.get(4).getLocalTeam()+", "+matchupArrayList.get(4).getVisitorTeam()+", "+matchupArrayList.get(4).getPhase()+", "+matchupArrayList.get(4).getBracket()+"), ("+matchupArrayList.get(5).getLocalTeam()+", "+matchupArrayList.get(5).getVisitorTeam()+", "+matchupArrayList.get(5).getPhase()+", "+matchupArrayList.get(5).getBracket()+"), ("+matchupArrayList.get(6).getLocalTeam()+", "+matchupArrayList.get(6).getVisitorTeam()+", "+matchupArrayList.get(6).getPhase()+", "+matchupArrayList.get(6).getBracket()+"), ("+matchupArrayList.get(7).getLocalTeam()+", "+matchupArrayList.get(7).getVisitorTeam()+", "+matchupArrayList.get(7).getPhase()+", "+matchupArrayList.get(7).getBracket()+"), ("+matchupArrayList.get(8).getLocalTeam()+", "+matchupArrayList.get(8).getVisitorTeam()+", "+matchupArrayList.get(8).getPhase()+", "+matchupArrayList.get(8).getBracket()+"), ("+matchupArrayList.get(9).getLocalTeam()+", "+matchupArrayList.get(9).getVisitorTeam()+", "+matchupArrayList.get(9).getPhase()+", "+matchupArrayList.get(9).getBracket()+"), ("+matchupArrayList.get(10).getLocalTeam()+", "+matchupArrayList.get(10).getVisitorTeam()+", "+matchupArrayList.get(10).getPhase()+", "+matchupArrayList.get(10).getBracket()+"), ("+matchupArrayList.get(11).getLocalTeam()+", "+matchupArrayList.get(11).getVisitorTeam()+", "+matchupArrayList.get(11).getPhase()+", "+matchupArrayList.get(11).getBracket()+"), ("+matchupArrayList.get(12).getLocalTeam()+", "+matchupArrayList.get(12).getVisitorTeam()+", "+matchupArrayList.get(12).getPhase()+", "+matchupArrayList.get(12).getBracket()+"), ("+matchupArrayList.get(13).getLocalTeam()+", "+matchupArrayList.get(13).getVisitorTeam()+", "+matchupArrayList.get(13).getPhase()+", "+matchupArrayList.get(13).getBracket()+"), ("+matchupArrayList.get(14).getLocalTeam()+", "+matchupArrayList.get(14).getVisitorTeam()+", "+matchupArrayList.get(14).getPhase()+", "+matchupArrayList.get(14).getBracket()+"), ("+matchupArrayList.get(15).getLocalTeam()+", "+matchupArrayList.get(15).getVisitorTeam()+", "+matchupArrayList.get(15).getPhase()+", "+matchupArrayList.get(15).getBracket()+")"};
+//                    succes = new AsyncCUD().execute(datos).get();
+//                    break;
+            }
+        } catch (Exception ex) {
+            Log.d("failure in insert", ex.getMessage());
+        }
+        return succes;
+    }
+
     public boolean updateMatchup(int id, int localTeam, int visitorTeam, String phase, int bracket, String winner) { //update
         boolean success = false;
         try {

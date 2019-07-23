@@ -25,6 +25,13 @@ public class Matchup {
         this.winner = winner;
     }
 
+    public Matchup(int localTeam, int visitorTeam, String phase, int bracket) {
+        this.localTeam = localTeam;
+        this.visitorTeam = visitorTeam;
+        this.phase = phase;
+        this.bracket = bracket;
+    }
+
     public int getId() {
         return id;
     }
