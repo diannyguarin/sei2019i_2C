@@ -31,7 +31,8 @@ tools:context=".Presentation.BracketsActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        >
 
         <LinearLayout
             android:layout_width="245dp"
@@ -51,7 +52,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC1" />
+                android:text="Team1" />
 
             <Button
                 android:id="@+id/bteam2"
@@ -59,7 +60,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC2" />
+                android:text="Team2" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -73,7 +74,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC3" />
+                android:text="Team3" />
 
             <Button
                 android:id="@+id/bteam4"
@@ -81,7 +82,51 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC4" />
+                android:text="Team4" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="B3" />
+
+            <Button
+                android:id="@+id/bteam5"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Team5" />
+
+            <Button
+                android:id="@+id/bTeam6"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Team6" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="B4" />
+
+            <Button
+                android:id="@+id/bTeam7"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Team7" />
+
+            <Button
+                android:id="@+id/bTeam8"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Team8" />
 
 
         </LinearLayout>

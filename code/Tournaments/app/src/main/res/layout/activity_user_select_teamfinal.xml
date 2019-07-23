@@ -30,6 +30,7 @@ tools:context=".Presentation.BracketsActivity">
         app:srcCompat="@drawable/bluecircle3" />
 
     <ScrollView
+        android:id="@+id/Final"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
@@ -43,7 +44,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="B1" />
+                android:text="TextView" />
 
             <Button
                 android:id="@+id/bteam1"
@@ -51,7 +52,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC1" />
+                android:text="Final1" />
 
             <Button
                 android:id="@+id/bteam2"
@@ -59,31 +60,7 @@ tools:context=".Presentation.BracketsActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="TeamC2" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="B2" />
-
-            <Button
-                android:id="@+id/bteam3"
-                android:layout_width="192dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:text="TeamC3" />
-
-            <Button
-                android:id="@+id/bteam4"
-                android:layout_width="192dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:text="TeamC4" />
-
-
+                android:text="Final2" />
         </LinearLayout>
 
     </ScrollView>
